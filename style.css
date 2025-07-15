@@ -1,0 +1,1778 @@
+/* Basic Reset & Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Color Palette */
+    --primary-color: #007bff; /* Bright Blue */
+    --secondary-color: #6c757d; /* Muted Grey */
+    --accent-color: #28a745; /* Green for highlights */
+    --text-dark: #212529; /* Dark text */
+    --text-light: #f8f9fa; /* Light text for dark backgrounds */
+    --bg-light: #f8f9fa; /* Light background */
+    --bg-medium: #e9ecef; /* Slightly darker light background */
+    --bg-dark: #343a40; /* Dark background */
+    --border-color: #dee2e6; /* Light border */
+    --shadow-light: rgba(0, 0, 0, 0.08);
+    --shadow-medium: rgba(0, 0, 0, 0.15);
+
+    /* Typography */
+    --font-heading: 'Roboto', sans-serif;
+    --font-body: 'Roboto', sans-serif;
+    --font-typewriter: 'Share Tech Mono', monospace; /* New font for typewriter */
+
+    /* Spacing */
+    --spacing-xs: 5px;
+    --spacing-sm: 10px;
+    --spacing-md: 20px;
+    --spacing-lg: 40px;
+    --spacing-xl: 80px;
+
+    /* Responsive Spacing Adjustments (New Variables) */
+    --spacing-mobile-sm: 10px;
+    --spacing-mobile-md: 15px;
+    --spacing-mobile-lg: 25px;
+    --spacing-mobile-xl: 50px; /* Reduced for mobile */
+
+    /* Animation Variables */
+    --animation-speed-fast: 0.2s;
+    --animation-speed-normal: 0.4s;
+    --animation-speed-slow: 0.6s;
+    --animation-ease-out-back: cubic-bezier(0.34, 1.56, 0.64, 1);
+    --animation-ease-in-out-quint: cubic-bezier(0.86, 0, 0.07, 1);
+    --animation-ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
+
+    --text-color-dark: #333; /* Ensuring this is defined */
+    --text-color-light: #555; /* Ensuring this is defined */
+    --primary-color-dark: #0056b3; /* Ensuring this is defined */
+    --accent-color-light: rgba(0, 123, 255, 0.4); /* Ensuring this is defined */
+}
+
+body {
+    font-family: var(--font-body, sans-serif);
+    line-height: 1.6;
+    color: var(--text-dark, #333);
+    background-color: var(--bg-light, #f8f8f8);
+    scroll-behavior: smooth;
+    margin: 0;
+    padding: 0;
+    /* Base font size for better mobile scaling */
+    font-size: 16px; /* Base font size */
+}
+
+/* Base Link Styling */
+a {
+    text-decoration: none;
+    color: var(--primary-color);
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #0056b3; /* Slightly darker blue on hover */
+    text-decoration: underline;
+}
+
+/* Utility Classes */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-md);
+}
+
+/* Adjust container padding for smaller screens */
+@media (max-width: 768px) {
+    .container {
+        padding: 0 var(--spacing-mobile-md); /* Use slightly smaller padding */
+    }
+}
+@media (max-width: 480px) {
+    .container {
+        padding: 0 var(--spacing-mobile-sm); /* Even smaller padding for very small screens */
+    }
+}
+
+
+.btn {
+    display: inline-block;
+    background: var(--primary-color);
+    color: var(--text-light);
+    padding: 12px 25px;
+    border-radius: 5px;
+    transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    border: none;
+    cursor: pointer;
+    font-size: 1em; /* Relative to body font size */
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 8px rgba(0, 123, 255, 0.2);
+}
+
+.btn:hover {
+    background: #0056b3;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 123, 255, 0.3);
+}
+
+.btn-sm {
+    padding: 8px 15px;
+    font-size: 0.9em; /* Relative to parent/base */
+}
+
+.section {
+    padding: var(--spacing-xl) 0; /* Base large padding */
+    margin-bottom: var(--spacing-md);
+    background-color: var(--bg-light);
+    box-shadow: 0 5px 15px var(--shadow-light);
+    border-radius: 8px;
+    margin-top: var(--spacing-lg);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Adjust section padding for smaller screens */
+@media (max-width: 768px) {
+    .section {
+        padding: var(--spacing-mobile-xl) 0; /* Reduced vertical padding */
+        margin-top: var(--spacing-mobile-lg); /* Reduced top margin */
+    }
+}
+@media (max-width: 480px) {
+    .section {
+        padding: var(--spacing-mobile-lg) 0; /* Further reduced vertical padding */
+        margin-bottom: var(--spacing-mobile-md); /* Reduced bottom margin */
+    }
+}
+
+h1, h2, h3, h4 {
+    font-family: var(--font-heading);
+    color: var(--text-dark);
+    margin-bottom: var(--spacing-md);
+    font-weight: 700;
+}
+
+/* --- ENHANCED H2 STYLING --- */
+h2 {
+    text-align: center;
+    font-size: 2.8em; /* Base size for h2 */
+    margin-bottom: var(--spacing-lg); /* Example: Could be --spacing-xl for h2 specifically */
+    position: relative;
+    padding-bottom: var(--spacing-sm);
+    color: var(--text-color-dark);
+    letter-spacing: 0.03em;
+    line-height: 1.2;
+
+    text-shadow:
+        1px 1px 3px rgba(0,0,0,0.3),
+        3px 3px 8px rgba(0,0,0,0.15);
+
+    transform: perspective(1000px) translateZ(0) rotateX(0deg);
+    transform-style: preserve-3d;
+
+    transition:
+        color var(--animation-speed-normal) var(--animation-ease-in-out-quint),
+        text-shadow var(--animation-speed-normal) var(--animation-ease-in-out-quint),
+        transform var(--animation-speed-normal) var(--animation-ease-out-back);
+}
+
+/* --- ENHANCED H3 STYLING --- */
+h3 {
+    text-align: center;
+    font-size: 2.4em; /* Example: Smaller font size for h3 */
+    margin-bottom: var(--spacing-md); /* Example: Different margin for h3 */
+    position: relative;
+    padding-bottom: var(--spacing-sm);
+    color: var(--text-color-dark); /* You might want a slightly different shade */
+    letter-spacing: 0.025em; /* Slightly tighter letter spacing */
+    line-height: 1.3;
+
+    text-shadow:
+        0.5px 0.5px 2px rgba(0,0,0,0.2),
+        2px 2px 5px rgba(0,0,0,0.1); /* Lighter shadow for h3 */
+
+    transform: perspective(1000px) translateZ(0) rotateX(0deg);
+    transform-style: preserve-3d;
+
+    transition:
+        color var(--animation-speed-normal) var(--animation-ease-in-out-quint),
+        text-shadow var(--animation-speed-normal) var(--animation-ease-in-out-quint),
+        transform var(--animation-speed-normal) var(--animation-ease-out-back);
+}
+
+/* --- H2 ::after styling --- */
+h2::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%) scaleX(1);
+    width: 80px; /* Specific width for h2 underline */
+    height: 4px; /* Specific height for h2 underline */
+    background-color: var(--primary-color);
+    border-radius: 2px;
+
+    transition:
+        width var(--animation-speed-normal) var(--animation-ease-in-out-quint),
+        background-color var(--animation-speed-normal) var(--animation-ease-in-out-quint),
+        transform var(--animation-speed-normal) var(--animation-ease-out-back);
+}
+
+/* --- H3 ::after styling --- */
+h3::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%) scaleX(1);
+    width: 60px; /* Specific (smaller) width for h3 underline */
+    height: 3px; /* Specific (thinner) height for h3 underline */
+    background-color: var(--secondary-color); /* Different color for h3 underline */
+    border-radius: 1.5px; /* Smaller border-radius */
+
+    transition:
+        width var(--animation-speed-normal) var(--animation-ease-in-out-quint),
+        background-color var(--animation-speed-normal) var(--animation-ease-in-out-quint),
+        transform var(--animation-speed-normal) var(--animation-ease-out-back);
+}
+
+/* --- H2 Hover Effects --- */
+h2:hover {
+    color: var(--primary-color);
+    transform: perspective(1000px) translateZ(10px) rotateX(5deg) scale(1.02);
+    text-shadow:
+        2px 2px 5px rgba(0,0,0,0.4),
+        5px 5px 15px rgba(0,0,0,0.25);
+    cursor: pointer;
+}
+
+/* --- H3 Hover Effects --- */
+h3:hover {
+    color: var(--accent-color); /* Could be another color for h3 hover */
+    transform: perspective(1000px) translateZ(8px) rotateX(4deg) scale(1.01); /* Slightly less dramatic for h3 */
+    text-shadow:
+        1.5px 1.5px 4px rgba(0,0,0,0.3),
+        4px 4px 10px rgba(0,0,0,0.2); /* Lighter hover shadow for h3 */
+    cursor: pointer;
+}
+
+/* --- H2 Hover ::after effects --- */
+h2:hover::after {
+    width: 120px;
+    background-color: var(--secondary-color);
+    transform: translateX(-50%) scaleX(1.2);
+}
+
+/* --- H3 Hover ::after effects --- */
+h3:hover::after {
+    width: 90px; /* Smaller hover width for h3 */
+    background-color: var(--primary-color); /* Different hover color for h3 underline */
+    transform: translateX(-50%) scaleX(1.1); /* Less dramatic scale for h3 */
+}
+
+/* --- Responsive Adjustments for H2 --- */
+@media (max-width: 768px) {
+    h2 {
+        font-size: 2em; /* Smaller font size on tablets/smaller desktops */
+        margin-bottom: var(--spacing-md);
+    }
+    h2::after {
+        width: 60px; /* Smaller underline on smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    h2 {
+        font-size: 1.8em; /* Even smaller font size on mobile */
+        margin-bottom: var(--spacing-sm);
+    }
+    h2::after {
+        width: 50px; /* Even smaller underline on mobile */
+    }
+}
+
+/* --- Responsive Adjustments for H3 --- */
+@media (max-width: 768px) {
+    h3 {
+        font-size: 1.8em; /* Smaller font size on tablets/smaller desktops */
+        margin-bottom: var(--spacing-sm);
+    }
+    h3::after {
+        width: 45px; /* Smaller underline on smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    h3 {
+        font-size: 1.6em; /* Even smaller font size on mobile */
+        margin-bottom: var(--spacing-xs); /* Even smaller margin for h3 on mobile */
+    }
+    h3::after {
+        width: 40px; /* Even smaller underline on mobile */
+    }
+}
+
+/* Header & Navigation */
+/* --- ENHANCED HEADER STYLING --- */
+header {
+    background-color: var(--bg-light); /* Your existing light background */
+    box-shadow: 0 5px 15px var(--shadow-light); /* Existing shadow */
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    padding: var(--spacing-md) 0; /* Add top/bottom padding to give it more presence */
+
+    /* Initial Load Animation */
+    animation: fadeInSlideBounce 1s ease-out forwards;
+
+    /* Transitions for hover/scroll effects */
+    transition:
+        background-color 0.3s var(--animation-ease-in-out-quint),
+        box-shadow 0.3s var(--animation-ease-in-out-quint),
+        padding 0.3s var(--animation-ease-in-out-quint), /* Animate padding changes */
+        transform 0.3s var(--animation-ease-in-out-quint); /* For any potential transform changes */
+
+    /* Performance hint for browser */
+    will-change: transform, box-shadow, background-color, padding;
+
+    /* Subtle depth/texture via pseudo-elements or gradients (optional) */
+    /* You could layer a subtle gradient here for depth, or use a pseudo-element */
+    /*
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(to bottom, rgba(255,255,255,0.05) 0%, rgba(0,0,0,0.02) 100%);
+        pointer-events: none; // Ensures clicks pass through
+        z-index: -1; // Place behind content
+    }
+    */
+}
+
+/* Define keyframes for a more dynamic entrance */
+@keyframes fadeInSlideBounce {
+    0% {
+        opacity: 0;
+        transform: translateY(-50px) scale(0.9); /* Start higher, slightly smaller */
+        box-shadow: 0 0 0 rgba(0,0,0,0); /* No shadow at start */
+    }
+    60% {
+        opacity: 1;
+        transform: translateY(10px) scale(1.02); /* Overshoot slightly for a bounce effect */
+        box-shadow: 0 10px 20px var(--shadow-light); /* Stronger shadow mid-animation */
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        box-shadow: 0 5px 15px var(--shadow-light);
+    }
+}
+
+/* --- SCROLL-BASED EFFECTS (Requires JavaScript to add/remove a class like 'scrolled') --- */
+/* This is a common pattern for when the header is "scrolled" into sticky position */
+header.scrolled {
+    background-color: var(--bg-light-alt); /* Slightly darker/different background when scrolled */
+    box-shadow: 0 8px 25px var(--shadow-dark); /* Deeper, more prominent shadow */
+    padding: var(--spacing-sm) 0; /* Shrink header height subtly on scroll */
+    transform: translateY(0); /* Ensure no lingering transform from previous states */
+    /* You could also add a subtle border-bottom here */
+    border-bottom: 1px solid var(--border-color-light);
+}
+
+/* --- INTERACTIVE STATES (Optional, for the header as a whole) --- */
+/*
+header:hover {
+    box-shadow: 0 7px 20px var(--shadow-hover-header); // Slightly more intense shadow on hover
+    // transform: scale(1.005); // A very subtle overall scale might be too much, test carefully
+}
+*/
+
+/* --- RESPONSIVE ADJUSTMENTS FOR HEADER ITSELF --- */
+@media (max-width: 992px) { /* Tablet and smaller desktop */
+    header {
+        padding: var(--spacing-sm) 0; /* Reduce padding on smaller screens */
+    }
+}
+
+@media (max-width: 768px) { /* Tablets and smaller */
+    header {
+        padding: var(--spacing-xs) 0; /* Further reduce padding for compact look */
+        box-shadow: 0 3px 10px var(--shadow-light); /* Lighter shadow on mobile */
+    }
+}
+
+/* Make sure your variables are defined (example values) */
+:root {
+    --bg-light: #ffffff; /* White background */
+    --bg-light-alt: #f0f0f0; /* Slightly off-white for scrolled state */
+    --shadow-light: rgba(0, 0, 0, 0.1);
+    --shadow-dark: rgba(0, 0, 0, 0.2);
+    --shadow-hover-header: rgba(0, 0, 0, 0.25);
+    --border-color-light: #e0e0e0;
+
+    /* Spacing variables */
+    --spacing-xs: 0.5em; /* e.g., 8px */
+    --spacing-sm: 1em;   /* e.g., 16px */
+    --spacing-md: 1.5em; /* e.g., 24px */
+    --spacing-lg: 2em;   /* e.g., 32px */
+
+    /* Animation variables */
+    --animation-speed-normal: 0.3s;
+    --animation-ease-in-out-quint: cubic-bezier(0.86, 0, 0.07, 1); /* Smoother ease-in-out */
+}
+#main-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing-md) var(--spacing-md);
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo h1 {
+    font-size: 2.5em;
+    color: var(--primary-color);
+    margin: 0;
+    letter-spacing: 2px;
+    display: inline-block;
+    position: relative;
+    transition: transform 0.3s ease-out, text-shadow 0.3s ease-out, color 0.3s ease;
+    text-shadow:
+        1px 1px 0 #0056b3, 2px 2px 0 #004a9d, 3px 3px 0 #003e87,
+        4px 4px 0 #003271, 5px 5px 0 #00265b,
+        6px 6px 0 rgba(0, 0, 0, 0.4), 7px 7px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Adjust logo size for smaller screens */
+@media (max-width: 768px) {
+    .logo h1 {
+        font-size: 2em;
+    }
+}
+@media (max-width: 480px) {
+    .logo h1 {
+        font-size: 1.7em;
+        /* Reduce shadow effect slightly for smaller screens to avoid clutter */
+        text-shadow: 
+            1px 1px 0 #0056b3, 2px 2px 0 #004a9d, 3px 3px 0 #003e87,
+            4px 4px 0 rgba(0, 0, 0, 0.4), 5px 5px 8px rgba(0, 0, 0, 0.3);
+    }
+}
+
+
+.logo h1:hover {
+    color: #FFFFFF;
+    transform: translate(-3px, -3px);
+    text-shadow:
+        4px 4px 0 #0056b3, 6px 6px 0 #004a9d,
+        8px 8px 0 #003e87, 10px 10px 0 #003271,
+        12px 12px 0 #00265b, 14px 14px 0 rgba(0, 0, 0, 0.5),
+        16px 16px 20px rgba(0, 0, 0, 0.4);
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Hamburger menu integration (CSS only for display changes) */
+.menu-toggle { /* This would be a button in your HTML */
+    display: none; /* Hidden on desktop */
+    font-size: 2rem;
+    background: none;
+    border: none;
+    color: var(--text-dark);
+    cursor: pointer;
+    z-index: 1001; /* Above navigation */
+}
+
+@media (max-width: 768px) {
+    #main-nav {
+        padding: var(--spacing-mobile-md) var(--spacing-mobile-md);
+    }
+
+    .menu-toggle {
+        display: block; /* Show hamburger on smaller screens */
+    }
+
+    .nav-links {
+        flex-direction: column;
+        position: absolute;
+        top: 100%; /* Position below header */
+        left: 0;
+        width: 100%;
+        background-color: var(--bg-light);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        transform: translateY(-100%); /* Start off-screen */
+        opacity: 0;
+        pointer-events: none; /* Prevent interaction when hidden */
+        transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+        padding: var(--spacing-md) 0; /* Add vertical padding */
+    }
+
+    .nav-links.active { /* Class added by JavaScript */
+        transform: translateY(0);
+        opacity: 1;
+        pointer-events: all;
+    }
+
+    .nav-links li {
+        width: 100%;
+        text-align: center;
+        margin: var(--spacing-mobile-sm) 0; /* Add vertical spacing between links */
+    }
+
+    .nav-links li a {
+        padding: 12px 20px; /* Adjust padding for mobile links */
+        font-size: 1.1em; /* Relative to body font size */
+        width: calc(100% - 40px); /* Adjust width to account for padding */
+        margin: 0 auto; /* Center individual links */
+    }
+
+    /* Override hover for mobile, maybe not needed or a different effect */
+    .nav-links li a:hover {
+        transform: none; /* Disable translateY on mobile for menu items if preferred */
+        box-shadow: none; /* Disable shadow on mobile if preferred */
+    }
+}
+
+
+/* --- Individual Navigation Link (Anchor Tag) --- */
+.nav-links li a {
+    padding: 12px 25px; /* Default padding for larger screens */
+    display: block;
+    color: var(--text-dark);
+    font-weight: bold;
+    font-size: 1.15em; /* Default font size for larger screens */
+    letter-spacing: 0.5px;
+    position: relative;
+    text-decoration: none;
+    border-radius: 30px;
+    overflow: hidden;
+    transition:
+        color 0.3s ease,
+        transform 0.3s ease-out,
+        box-shadow 0.3s ease-out,
+        background-color 0.3s ease;
+    z-index: 1;
+}
+
+/* Media Query for Smartphones (screens up to 767px wide) */
+@media (max-width: 767px) {
+    .nav-links li a {
+        font-size: 1.1em; /* Adjusted to be slightly smaller than the previous 1.25em to fit better */
+        padding: 10px 15px; /* Slightly reduced padding */
+    }
+}
+.nav-links li a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, var(--primary-color) 0%, var(--accent-color, #00BFFF) 100%);
+    z-index: -1;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease-out;
+    border-radius: inherit;
+}
+
+.nav-links li a::after {
+    content: '';
+    position: absolute;
+    bottom: 5px;
+    left: 50%;
+    transform: translateX(-50%) scaleX(0);
+    width: calc(100% - 50px);
+    height: 2px;
+    background-color: var(--text-light);
+    transition: transform 0.3s ease;
+}
+
+.nav-links li a:hover {
+    color: var(--text-light);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+}
+
+.nav-links li a:hover::before {
+    transform: scaleX(1);
+}
+
+.nav-links li a:hover::after {
+    transform: translateX(-50%) scaleX(1);
+}
+
+.nav-links li.active a {
+    color: var(--text-light);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.nav-links li.active a::before {
+    transform: scaleX(1);
+}
+
+.nav-links li.active a::after {
+    transform: translateX(-50%) scaleX(1);
+}
+
+/* Hero Section - Typewriter Styling */
+.hero-section {
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('assets/banner.gif') no-repeat center center/cover;
+    color: var(--text-light);
+    text-align: center;
+    padding: 200px var(--spacing-md); /* Base large padding */
+    position: relative;
+    overflow: hidden;
+    animation: fadeIn 1.5s ease-out;
+}
+
+/* Adjust hero section padding for smaller screens */
+@media (max-width: 768px) {
+    .hero-section {
+        padding: 120px var(--spacing-mobile-md); /* Reduced padding */
+    }
+}
+@media (max-width: 480px) {
+    .hero-section {
+        padding: 80px var(--spacing-mobile-sm); /* Further reduced padding for very small screens */
+    }
+}
+
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* Specific styling for the typewriter H1 */
+#typewriter-text {
+    font-family: var(--font-typewriter);
+    font-size: 4em; /* Base for desktops */
+    margin-bottom: var(--spacing-md);
+
+    text-shadow: 
+        -1px -1px 0px rgba(255, 255, 255, 0.7),
+        -2px -2px 0px rgba(200, 200, 200, 0.5),
+        1px 1px 0px whitesmoke,
+        2px 2px 0px rgba(180, 180, 180, 0.8),
+        3px 3px 0px rgba(0, 0, 0, 0.9),
+        4px 4px 0px rgba(0, 0, 0, 0.7),
+        6px 6px 12px rgba(0,0,0,0.4);
+
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 4px solid var(--primary-color);
+    animation: blink-caret 0.75s step-end infinite;
+    display: inline-block;
+    max-width: 100%;
+    box-sizing: border-box;
+    word-break: break-word; /* fallback for long words */
+}
+
+/* === Responsive Scaling for Mobile Devices (Adjusted) === */
+@media (max-width: 768px) {
+    #typewriter-text {
+        font-size: 2.5em; /* Retain this as it's good for tablets/medium phones */
+        text-align: center;
+        white-space: normal; /* Allow wrapping on smaller screens */
+        border-right: 3px solid var(--primary-color);
+    }
+}
+
+@media (max-width: 480px) {
+    #typewriter-text {
+        font-size: 2em; /* Good for typical smartphones */
+        padding: 0 0.5rem; /* Slightly reduced padding */
+        text-align: center;
+        white-space: normal; /* Allow wrap for small phones */
+        border-right: 2px solid var(--primary-color); /* Thinner cursor */
+    }
+}
+
+@media (max-width: 360px) { /* For very small screens like iPhone SE or older Androids */
+    #typewriter-text {
+        font-size: 1.6em; /* Further reduce for very small screens */
+        padding: 0 0.2rem;
+    }
+}
+
+.hero-content p {
+    font-size: 1.5em; /* Base size */
+    margin-bottom: var(--spacing-lg);
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+    opacity: 0;
+    transition: opacity 1s ease-out 1s;
+}
+
+/* Adjust hero paragraph for smaller screens */
+@media (max-width: 768px) {
+    .hero-content p {
+        font-size: 1.2em;
+        margin-bottom: var(--spacing-md);
+    }
+}
+@media (max-width: 480px) {
+    .hero-content p {
+        font-size: 1em;
+        margin-bottom: var(--spacing-sm);
+    }
+}
+
+.hero-content p.show {
+    opacity: 1;
+}
+
+.hero-content .btn {
+    opacity: 0;
+    transform: translateY(30px);
+    display: inline-block;
+    padding: 16px 38px;
+    font-size: 1.15em; /* Base size */
+    font-weight: 600;
+    text-decoration: none;
+    color: var(--text-light);
+    border: none;
+    border-radius: 40px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    background: linear-gradient(45deg, var(--primary-color) 0%, var(--accent-color, #00BFFF) 100%);
+    background-size: 200% 200%;
+    background-position: 0% 0%;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    transition:
+        opacity 0.8s ease-out 1.5s,
+        transform 0.8s ease-out 1.5s,
+        background-position 0.4s ease-out,
+        box-shadow 0.4s ease-out,
+        color 0.4s ease;
+}
+
+/* Adjust hero button for smaller screens */
+@media (max-width: 768px) {
+    .hero-content .btn {
+        padding: 14px 30px;
+        font-size: 1.05em;
+    }
+}
+@media (max-width: 480px) {
+    .hero-content .btn {
+        padding: 12px 25px;
+        font-size: 1em;
+        width: 80%; /* Make button take up more width */
+        max-width: 300px; /* But not too wide */
+    }
+}
+
+.hero-content .btn.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.hero-content .btn:hover {
+    color: var(--text-light);
+    transform: translateY(-10px);
+    background-position: 100% 100%;
+    box-shadow: 0 18px 35px rgba(0, 0, 0, 0.4);
+}
+
+/* Projects Section */
+.projects-section {
+    background-color: var(--bg-medium);
+}
+
+.project-filters {
+    text-align: center;
+    margin-bottom: var(--spacing-lg);
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: var(--spacing-sm); /* Base gap */
+}
+
+/* Adjust project filters for smaller screens */
+@media (max-width: 480px) {
+    .project-filters {
+        flex-direction: column; /* Stack buttons vertically */
+        gap: var(--spacing-xs); /* Smaller gap between stacked buttons */
+    }
+    .project-filters button {
+        width: 90%; /* Make buttons take up more width */
+        margin: 0 auto; /* Center them */
+        padding: 10px 15px; /* Adjust padding */
+    }
+}
+
+
+.project-filters button {
+    padding: 10px 22px;
+    border: 2px solid var(--border-color);
+    background-color: var(--bg-light);
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1em;
+    font-weight: 500;
+    color: var(--text-dark);
+    box-shadow: 0 2px 5px var(--shadow-light);
+}
+
+.project-filters button:hover {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    border-color: var(--primary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 123, 255, 0.2);
+}
+
+.project-filters button.active {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    border-color: var(--primary-color);
+    box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3);
+}
+
+.project-grid {
+    display: grid;
+    /* This is already great for responsiveness! */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Adjusted minmax slightly to 300px for better fit on tablets, 320px was fine too */
+    gap: var(--spacing-lg); /* Base gap */
+}
+
+/* Adjust grid gap for smaller screens */
+@media (max-width: 768px) {
+    .project-grid {
+        gap: var(--spacing-md); /* Reduced gap */
+    }
+}
+@media (max-width: 480px) {
+    .project-grid {
+        grid-template-columns: 1fr; /* Stack cards on very small screens */
+        gap: var(--spacing-md); /* Keep a decent gap when stacked */
+    }
+}
+
+
+.project-card {
+    background-color: var(--bg-light);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px var(--shadow-medium);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.project-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.25);
+}
+
+.project-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    display: block;
+    border-bottom: 3px solid var(--primary-color);
+}
+
+/* Adjust project image height for smaller screens */
+@media (max-width: 480px) {
+    .project-card img {
+        height: 180px; /* Slightly shorter on mobile */
+    }
+}
+
+.project-info {
+    padding: var(--spacing-md);
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.project-info h3 {
+    font-size: 1.6em;
+    margin-bottom: var(--spacing-sm);
+    color: var(--primary-color);
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 2px solid var(--primary-color);
+    width: 0;
+    animation: typewriter 4s steps(40, end) infinite, blinkCursor 0.7s step-end infinite;
+    text-shadow:
+        1px 1px 0 #000,
+        2px 2px 0 #333,
+        3px 3px 0 #666;
+}
+
+/* Adjust project info h3 for smaller screens */
+@media (max-width: 768px) {
+    .project-info h3 {
+        font-size: 1.4em;
+        white-space: normal; /* Allow wrapping on mobile */
+        width: auto; /* Allow full width for text */
+        animation: none; /* Disable typewriter effect on smaller screens for better readability */
+        border-right: none; /* Remove blinking cursor */
+    }
+}
+
+
+/* Typewriter animation (repeats) */
+@keyframes typewriter {
+    0% { width: 0; }
+    50% { width: 100%; }
+    100% { width: 0; }
+}
+
+/* Blinking cursor */
+@keyframes blinkCursor {
+    0%, 100% { border-color: transparent; }
+    50% { border-color: var(--primary-color); }
+}
+
+/* --- ENHANCED PROJECT PARAGRAPH STYLING --- */
+.project-info p {
+    font-size: 1.05em; 
+    line-height: 1.7; 
+    color: var(--text-color-light); 
+    margin-bottom: var(--spacing-md);
+    flex-grow: 1;
+    
+    font-weight: 300;
+    letter-spacing: 0.03em;
+    text-align: left;
+
+    text-shadow: 
+        1px 1px 3px rgba(255, 255, 255, 0.2),
+        -1px -1px 3px rgba(0, 0, 0, 0.1),
+        0px 0px 5px rgba(0,0,0,0.05);
+
+    position: relative; 
+    padding-bottom: 5px; 
+    overflow: hidden; 
+
+    transform: perspective(700px) rotateX(0deg) rotateY(0deg) translateZ(0px) scale(1);
+    transform-style: preserve-3d; 
+
+    transition: 
+        color var(--animation-speed-normal) var(--animation-ease-in-out-quint), 
+        text-shadow var(--animation-speed-normal) var(--animation-ease-in-out-quint), 
+        transform var(--animation-speed-slow) var(--animation-ease-out-back);
+    
+    hyphens: auto;
+    word-break: break-word;
+    user-select: none;
+}
+
+/* Adjust project paragraph font size for smaller screens */
+@media (max-width: 768px) {
+    .project-info p {
+        font-size: 0.95em; /* Slightly smaller for better fit */
+    }
+}
+@media (max-width: 480px) {
+    .project-info p {
+        font-size: 0.9em; /* Even smaller for small phones */
+        margin-bottom: var(--spacing-sm); /* Reduce margin */
+    }
+}
+
+.project-info p::before {
+    content: '';
+    position: absolute;
+    bottom: 0; 
+    left: 50%;
+    transform: translateX(-50%) scaleX(0);
+    width: 100%; 
+    height: 2px; 
+    background-color: var(--accent-color-light); 
+    border-radius: 1px;
+    transform-origin: center;
+    
+    transition: transform var(--animation-speed-slow) var(--animation-ease-out-back) var(--animation-speed-fast),
+                background-color var(--animation-speed-normal) ease-in-out;
+}
+
+.project-card:hover .project-info p {
+    color: var(--primary-color-dark);
+    transform: perspective(700px) rotateX(6deg) rotateY(-6deg) translateZ(30px) scale(1.01);
+    text-shadow: 
+        2px 2px 5px rgba(255, 255, 255, 0.3),
+        -2px -2px 5px rgba(0, 0, 0, 0.25),
+        0px 0px 8px rgba(0,0,0,0.1);
+
+    &:active {
+        transform: perspective(700px) rotateX(3deg) rotateY(-3deg) translateZ(15px) scale(1.005);
+        transition-duration: var(--animation-speed-fast);
+    }
+}
+
+/* Activate the underline on card hover */
+.project-card:hover .project-info p::before {
+    transform: translateX(-50%) scaleX(1);
+    background-color: var(--primary-color);
+}
+
+.project-info .btn {
+    align-self: flex-start;
+    padding: 12px 28px;
+    font-size: 1em;
+    border: none;
+    border-radius: 999px; /* Fully rounded ends */
+    background: linear-gradient(135deg, #00c6ff, #0072ff); /* Blue gradient */
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 114, 255, 0.3); /* Soft glow */
+    font-weight: 600;
+    text-align: center;
+}
+
+/* Mobile-friendly (small screens) */
+@media (max-width: 480px) {
+    .project-info .btn {
+        width: 100%;
+        align-self: stretch;
+        padding: 14px 0;
+        font-size: 1.05em;
+    }
+}
+
+/* About Section - Team Members */
+.about-section {
+    background-color: var(--bg-light);
+}
+
+.team-members {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--spacing-lg); /* Base gap */
+    margin-top: var(--spacing-lg);
+}
+
+/* Adjust team members grid gap for smaller screens */
+@media (max-width: 768px) {
+    .team-members {
+        gap: var(--spacing-md);
+    }
+}
+@media (max-width: 480px) {
+    .team-members {
+        flex-direction: column; /* Stack cards vertically */
+        align-items: center; /* Center stacked cards */
+        gap: var(--spacing-md); /* Reduced gap when stacked */
+    }
+}
+
+
+/* Card */
+:root {
+    /* Re-defining these for clarity within the context of the card, but global variables are already set. */
+    --primary-color: #4eaaff; 
+    --secondary-color: #a964ff; 
+    --text-color-dark: #222222;
+}
+
+/* Card Container */
+.team-member-card {
+    position: relative;
+    width: 280px; /* Fixed width, consider making this fluid for mobile */
+    padding: 32px 28px 36px;
+    background: whitesmoke;
+    border-radius: 18px;
+    color: var(--text-color-dark);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    box-shadow:
+        0 2px 6px rgba(0, 0, 0, 0.05),
+        0 12px 30px rgba(0, 0, 0, 0.1),
+        0 0 6px rgba(78, 170, 255, 0.08);
+    transition: 
+        transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1),
+        box-shadow 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    text-align: center;
+    overflow: hidden;
+    cursor: default;
+}
+
+/* Make team member card fluid on smaller screens */
+@media (max-width: 480px) {
+    .team-member-card {
+        width: 90%; /* Take up most of the screen width */
+        max-width: 300px; /* Cap it at a reasonable size */
+        padding: var(--spacing-md) var(--spacing-sm) var(--spacing-md) var(--spacing-sm); /* Adjust padding */
+    }
+}
+
+
+/* Top accent bar */
+.team-member-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 12%;
+    width: 76%;
+    height: 5px;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    border-radius: 0 0 10px 10px;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+/* Hover effects (keep for desktop) */
+.team-member-card:hover {
+    transform: translateY(-12px);
+    box-shadow:
+        0 8px 20px rgba(0, 0, 0, 0.12),
+        0 20px 50px rgba(0, 0, 0, 0.15),
+        0 0 14px rgba(78, 170, 255, 0.15);
+    cursor: pointer;
+}
+
+.team-member-card:hover::before {
+    opacity: 1;
+}
+
+/* Profile Image */
+.team-member-card img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--primary-color);
+    margin-bottom: 18px;
+    transition: transform 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.team-member-card:hover img {
+    transform: scale(1.07);
+}
+
+/* Name */
+.team-member-card h3 {
+    font-size: 1.45rem;
+    margin-bottom: 6px;
+    color: var(--primary-color);
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+/* Adjust h3 font size within card */
+@media (max-width: 480px) {
+    .team-member-card h3 {
+        font-size: 1.25rem;
+    }
+}
+
+.team-member-card:hover h3 {
+    color: var(--secondary-color);
+}
+
+/* Role/Description */
+.team-member-card p {
+    font-size: 1rem;
+    color: rgba(34, 34, 34, 0.7);
+    margin-bottom: 12px;
+    line-height: 1.4;
+    transition: color 0.3s ease;
+}
+
+/* Adjust paragraph font size within card */
+@media (max-width: 480px) {
+    .team-member-card p {
+        font-size: 0.9rem;
+    }
+}
+
+
+.team-member-card:hover p {
+    color: rgba(34, 34, 34, 0.9);
+}
+
+/* Social Links */
+.social-links a {
+    display: inline-block;
+    margin: 0 8px;
+    font-size: 1.3rem;
+    color: rgba(34, 34, 34, 0.5);
+    transition: 
+        color 0.3s ease,
+        transform 0.3s ease;
+    text-decoration: none;
+}
+
+.team-member-card:hover .social-links a {
+    color: var(--primary-color);
+    transform: translateY(-3px);
+}
+
+/* Elegant gradient top line (already defined, keeping for reference) */
+.team-member-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 10%;
+    width: 80%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    border-radius: 0 0 10px 10px;
+    opacity: 0.7;
+}
+
+/* Soft glow hover (already defined, keeping for reference) */
+.team-member-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 30px var(--shadow-medium);
+}
+
+/* Profile image (already defined, keeping for reference) */
+.team-member-card img {
+    width: 96px; /* Your original smaller size, I'll stick to 100px for consistency */
+    height: 96px; /* Your original smaller size */
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 16px;
+    border: 3px solid var(--primary-color);
+    transition: transform 0.3s ease;
+}
+
+.team-member-card:hover img {
+    transform: scale(1.06);
+}
+
+/* Name (already defined, keeping for reference) */
+.team-member-card h3 {
+    font-size: 1.3em;
+    margin-bottom: 6px;
+    color: var(--primary-color);
+}
+
+/* Role/description (already defined, keeping for reference) */
+.team-member-card p {
+    font-size: 0.95em;
+    color: rgba(255, 255, 255, 0.75); /* This color might be for a darker background card? Currently whitesmoke. */
+    margin-bottom: 10px;
+}
+/* IMPORTANT: The `color: rgba(255, 255, 255, 0.75);` here conflicts with the previous `color: rgba(34, 34, 34, 0.7);` for `.team-member-card p`. You should pick one or define different p styles for different card types. Assuming the dark text is correct for the whitesmoke background. */
+
+
+/* Social icons (already defined, keeping for reference) */
+.social-links a {
+    margin: 0 6px;
+    font-size: 1.2em;
+    color: rgba(255, 255, 255, 0.5); /* Again, this seems for a dark background. Adjusting below. */
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+/* Adjusting social icon color for light background */
+.team-member-card .social-links a {
+    color: rgba(34, 34, 34, 0.5); /* Adjusted to match card text color */
+}
+
+
+.team-member-card:hover .social-links a {
+    color: var(--primary-color);
+    transform: translateY(-2px);
+}
+
+.team-member-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background-color: var(--primary-color);
+    transform: translateY(-100%);
+    transition: transform 0.3s ease-out;
+}
+
+.team-member-card:hover::before {
+    transform: translateY(0);
+}
+
+.team-member-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 20px var(--shadow-medium);
+}
+
+.team-member-card img {
+    width: 140px; /* Your original larger size, this will take precedence */
+    height: 140px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: var(--spacing-md);
+    border: 4px solid var(--accent-color);
+    box-shadow: 0 0 0 5px rgba(40, 167, 69, 0.2);
+    transition: border-color 0.3s ease;
+}
+
+/* Adjust team member image size for smaller screens */
+@media (max-width: 480px) {
+    .team-member-card img {
+        width: 100px;
+        height: 100px;
+        margin-bottom: var(--spacing-sm); /* Reduce margin */
+    }
+}
+
+
+.team-member-card:hover img {
+    border-color: var(--primary-color);
+}
+
+.team-member-card h4 {
+    font-size: 1.6em;
+    margin-bottom: var(--spacing-xs);
+    color: var(--text-dark);
+}
+
+/* Adjust h4 font size within card */
+@media (max-width: 480px) {
+    .team-member-card h4 {
+        font-size: 1.3em;
+    }
+}
+
+.team-member-card p {
+    color: var(--secondary-color); /* This color might be for a darker background card? Currently whitesmoke. */
+    font-size: 1em;
+    margin-bottom: var(--spacing-md);
+}
+/* IMPORTANT: The `color: var(--secondary-color);` conflicts with `color: rgba(34, 34, 34, 0.7);`. Consolidate. */
+/* Assuming you want the dark text on whitesmoke background for the role/description */
+.team-member-card p:not(.social-links a) { /* Target only the descriptive paragraph */
+    color: var(--text-color-dark); /* Use a consistent dark text color */
+    font-size: 0.95em;
+    margin-bottom: var(--spacing-sm); /* Adjust spacing */
+}
+@media (max-width: 480px) {
+    .team-member-card p:not(.social-links a) {
+        font-size: 0.85em; /* Smaller on mobile */
+    }
+}
+
+
+.social-icon {
+    width: 28px;
+    height: 28px;
+    margin: 0 8px;
+    vertical-align: middle;
+    filter: grayscale(100%);
+    transition: filter 0.3s ease, transform 0.3s ease;
+}
+
+.social-icon:hover {
+    filter: grayscale(0%);
+    transform: scale(1.2);
+}
+
+/* Resources Section */
+.resources-section {
+    background-color: var(--bg-light);
+}
+
+.resource-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-lg);
+}
+
+/* Adjust resource list grid gap for smaller screens */
+@media (max-width: 768px) {
+    .resource-list {
+        gap: var(--spacing-md);
+    }
+}
+@media (max-width: 480px) {
+    .resource-list {
+        grid-template-columns: 1fr; /* Stack resources on small screens */
+        gap: var(--spacing-md);
+    }
+}
+
+
+.resource-item {
+    background-color: var(--bg-medium);
+    padding: var(--spacing-md);
+    border-radius: 12px;
+    box-shadow: 0 4px 12px var(--shadow-light);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-left: 5px solid var(--primary-color);
+}
+
+.resource-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 18px var(--shadow-medium);
+}
+
+.resource-item h3 {
+    font-size: 1.5em;
+    margin-bottom: var(--spacing-sm);
+    color: var(--primary-color);
+}
+
+/* Adjust resource item h3 for smaller screens */
+@media (max-width: 480px) {
+    .resource-item h3 {
+        font-size: 1.3em;
+    }
+}
+
+.resource-item p {
+    font-size: 1em;
+    color: #666;
+    margin-bottom: var(--spacing-md);
+    flex-grow: 1;
+}
+
+/* Adjust resource item paragraph for smaller screens */
+@media (max-width: 480px) {
+    .resource-item p {
+        font-size: 0.9em;
+        margin-bottom: var(--spacing-sm);
+    }
+}
+
+.resource-item .btn {
+    align-self: flex-start;
+    padding: 12px 28px;
+    font-size: 1em;
+    font-weight: 600;
+    border: none;
+    border-radius: 999px; /* Fully rounded / pill shape */
+    background: linear-gradient(135deg, #00b4d8, #0077b6);
+    color: #fff;
+    cursor: pointer;
+    box-shadow: 0 6px 16px rgba(0, 180, 216, 0.25);
+    transition:
+        background 0.4s ease,
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        letter-spacing 0.3s ease;
+
+    animation: fadeInUp 0.6s ease forwards;
+    opacity: 0;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.resource-item .btn:hover {
+    background: linear-gradient(135deg, #0096c7, #023e8a);
+    transform: translateY(-4px) scale(1.05);
+    box-shadow: 0 8px 24px rgba(0, 119, 182, 0.4);
+    letter-spacing: 1px;
+}
+
+/* Adjust resource item button for smaller screens */
+@media (max-width: 480px) {
+    .resource-item .btn {
+        width: 100%;
+        align-self: stretch;
+        padding: 12px 0;
+        font-size: 0.95em;
+    }
+}
+
+
+/* Optional pulse effect (already defined, keeping) */
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Contact Section */
+.contact-section {
+    background-color: var(--bg-medium);
+    padding-bottom: var(--spacing-lg);
+}
+
+/* Adjust contact section padding for smaller screens */
+@media (max-width: 768px) {
+    .contact-section {
+        padding-bottom: var(--spacing-mobile-lg);
+    }
+}
+@media (max-width: 480px) {
+    .contact-section {
+        padding-bottom: var(--spacing-mobile-md);
+    }
+}
+
+
+#contact-form {
+    max-width: 700px;
+    margin: 0 auto var(--spacing-xl) auto; /* Base bottom margin */
+    background-color: var(--bg-light);
+    padding: var(--spacing-lg);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px var(--shadow-medium);
+}
+
+/* Adjust contact form padding and margin for smaller screens */
+@media (max-width: 768px) {
+    #contact-form {
+        padding: var(--spacing-md);
+        margin-bottom: var(--spacing-lg);
+    }
+}
+@media (max-width: 480px) {
+    #contact-form {
+        padding: var(--spacing-mobile-md);
+        margin-bottom: var(--spacing-mobile-xl); /* Keep some space at the very bottom */
+    }
+}
+
+#contact-form label {
+    display: block;
+    margin-bottom: 12px;
+    font-weight: bold;
+    color: var(--text-dark);
+    font-size: 1.1em;
+}
+
+/* Adjust form label font size for smaller screens */
+@media (max-width: 480px) {
+    #contact-form label {
+        font-size: 1em;
+        margin-bottom: 8px;
+    }
+}
+
+
+#contact-form input[type="text"],
+#contact-form input[type="email"],
+#contact-form textarea {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 30px; /* Base margin */
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 1.1em;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    background-color: var(--bg-light);
+}
+
+/* Adjust form input/textarea padding and margin for smaller screens */
+@media (max-width: 480px) {
+    #contact-form input[type="text"],
+    #contact-form input[type="email"],
+    #contact-form textarea {
+        padding: 10px;
+        margin-bottom: 20px; /* Reduced margin */
+        font-size: 1em;
+    }
+}
+
+
+#contact-form input:focus,
+#contact-form textarea:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.2);
+    outline: none;
+}
+
+#contact-form textarea {
+    resize: vertical;
+    min-height: 150px;
+}
+
+/* Adjust textarea min-height for smaller screens */
+@media (max-width: 480px) {
+    #contact-form textarea {
+        min-height: 100px;
+    }
+}
+
+
+#contact-form button[type="submit"] {
+    width: auto;
+    display: block;
+    margin: 0 auto;
+}
+/* Already responsive due to `width: auto; display: block; margin: 0 auto;` from `.btn` */
+
+
+.contact-info {
+    text-align: center;
+    margin-top: var(--spacing-lg);
+    padding: var(--spacing-md);
+    background-color: var(--bg-light);
+    border-radius: 10px;
+    box-shadow: 0 2px 10px var(--shadow-light);
+}
+
+/* Adjust contact info padding and margin for smaller screens */
+@media (max-width: 480px) {
+    .contact-info {
+        margin-top: var(--spacing-md);
+        padding: var(--spacing-sm);
+    }
+}
+
+.contact-info p {
+    margin-bottom: var(--spacing-sm); /* Original had missing value, assuming small spacing */
+    font-size: 1em; /* Ensure this is readable */
+}
+
+/* Adjust contact info paragraph font size for smaller screens */
+@media (max-width: 480px) {
+    .contact-info p {
+        font-size: 0.9em;
+        margin-bottom: var(--spacing-xs);
+    }
+}
+
+/* Add a basic footer for full example
+*/
+footer {
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    text-align: center;
+    padding: var(--spacing-md) 0;
+    font-size: 0.9em;
+}
+
+footer p {
+    margin: 0;
+}
+
+/* General body font size adjustment for very small screens */
+@media (max-width: 360px) {
+    body {
+        font-size: 15px; /* Slightly reduce base font size for extremely small devices */
+    }
+}
+/* Container with 3D Shadow + Float Animation */
+.email-container {
+background: linear-gradient(135deg, #1f2937, #374151);
+  padding: 2.5rem;
+  border-radius: 20px;
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.2), /* strong bottom shadow */
+    0 -5px 15px rgba(255, 255, 255, 0.3); /* subtle top light */
+  max-width: 600px;
+  margin: 4rem auto;
+  text-align: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  animation: float 4s ease-in-out infinite, fadeInUp 1s ease-out;
+  transform-style: preserve-3d;
+}
+
+/* Email Row */
+.email-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  font-size: 1.3rem;
+  color: #1f2937;
+}
+
+/* Label Styling with Pop-In Animation */
+.label {
+  font-weight: 600;
+  color: #2563eb;
+  transform: translateY(40px) rotateX(90deg);
+  opacity: 0;
+  animation: popIn 0.8s forwards 0.3s;
+  backface-visibility: hidden;
+}
+
+/* Email Link with Glow and Hover Elevation */
+.email-link {
+  position: relative;
+  color: #10b981;
+  font-weight: bold;
+  text-decoration: none;
+  padding: 4px 6px;
+  opacity: 0;
+  transform: translateY(40px) rotateX(90deg);
+  animation: popIn 0.8s forwards 0.5s;
+  transition: all 0.3s ease;
+  backface-visibility: hidden;
+}
+
+.email-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0%;
+  height: 2px;
+  background: #10b981;
+  transition: width 0.4s ease;
+}
+
+.email-link:hover::after {
+  width: 100%;
+}
+
+.email-link:hover {
+  color: #0f766e;
+  transform: scale(1.08);
+  text-shadow: 0 2px 8px rgba(16, 185, 129, 0.5);
+}
+
+/* Animations */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) rotateX(0);
+  }
+  50% {
+    transform: translateY(-10px) rotateX(2deg);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes popIn {
+  to {
+    transform: translateY(0) rotateX(0);
+    opacity: 1;
+  }
+}
+
+/* Responsive */
+@media (max-width: 500px) {
+  .email-row {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
