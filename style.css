@@ -434,12 +434,20 @@ header:hover {
     margin: 0 auto;
 }
 
+.logo {
+    display: flex; /* Make the .logo container a flex container */
+    justify-content: center; /* Center items horizontally along the main axis */
+    align-items: center; /* Center items vertically along the cross axis (if needed) */
+    /* Add this only if the .logo container itself needs to take full width */
+    width: 100%;
+}
+
 .logo h1 {
     font-size: 2.5em;
     color: var(--primary-color);
-    margin: 0;
+    margin: 0; /* Important: remove default margins that might push it off center */
     letter-spacing: 2px;
-    display: inline-block;
+    /* display: inline-block; - can be removed if h1 is the only flex item */
     position: relative;
     transition: transform 0.3s ease-out, text-shadow 0.3s ease-out, color 0.3s ease;
     text-shadow:
@@ -454,16 +462,16 @@ header:hover {
         font-size: 2em;
     }
 }
+
 @media (max-width: 480px) {
+    /* No need for text-align: center; here if using flexbox on .logo */
     .logo h1 {
         font-size: 1.7em;
-        /* Reduce shadow effect slightly for smaller screens to avoid clutter */
-        text-shadow: 
+        text-shadow:
             1px 1px 0 #0056b3, 2px 2px 0 #004a9d, 3px 3px 0 #003e87,
             4px 4px 0 rgba(0, 0, 0, 0.4), 5px 5px 8px rgba(0, 0, 0, 0.3);
     }
 }
-
 
 .logo h1:hover {
     color: #FFFFFF;
@@ -474,7 +482,6 @@ header:hover {
         12px 12px 0 #00265b, 14px 14px 0 rgba(0, 0, 0, 0.5),
         16px 16px 20px rgba(0, 0, 0, 0.4);
 }
-
 .nav-links {
     display: flex;
     list-style: none;
