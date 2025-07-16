@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const typingSpeed = 90; // Slightly faster typing for crispness
     const deletingSpeed = 40; // Slightly faster deleting
     const delayBetweenMessages = 8000; // Reduced delay for a more dynamic feel (4 seconds)
-    const initialDelay = 500; // Small delay before the first message starts typing
+    const initialDelay = 100; // Small delay before the first message starts typing
 
     // --- REVERTING TO GREEN TONE WITH SUBTLE DEPTH ---
     // Set the direct green color for the text
