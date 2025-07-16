@@ -4,10 +4,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const heroParagraph = document.querySelector('.hero-content p');
     const heroButton = document.querySelector('.hero-content .btn');
     const messages = [
-        "Engaging interfaces, crafted.",
-        "Pixel-perfect precision.",
-        "Interactive by design.",
-        "Your vision, our build."
+       
+        "Innovating digital presence",
+        "Ideas brought to life, online",
+        "Engaging interfaces, crafted",
+        "Pixel-perfect precision",
+        "Code, art, combined",
+        "Interactive by design",
+        "Your vision, our build"
     ];
     let messageIndex = 0;
     let charIndex = 0;
