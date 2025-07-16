@@ -155,123 +155,90 @@ h1, h2, h3, h4 {
 }
 
 /* --- ENHANCED H2 STYLING --- */
+/* --- H2 3D-like Hover Effect --- */
+/* --- H2 3D-like Hover Effect --- */
 h2 {
-    text-align: center;
-    font-size: 2.8em; /* Base size for h2 */
-    margin-bottom: var(--spacing-lg); /* Example: Could be --spacing-xl for h2 specifically */
-    position: relative;
-    padding-bottom: var(--spacing-sm);
-    color: var(--text-color-dark);
-    letter-spacing: 0.03em;
-    line-height: 1.2;
+    position: relative; /* Needed for transform origin if you want to be precise, and for general positioning */
+    color: var(--primary-color, #007bff); /* Default color for the H2 text */
+    font-size: 2.5em; /* Adjust font size as needed */
+    font-weight: bold;
+    text-align: center; /* Center your h2 if desired */
+    
+    /* Initial state for the 3D text shadow */
+    text-shadow: 
+        0 0 0 transparent, /* Top layer - transparent */
+        0 0 0 transparent, /* Middle layer - transparent */
+        0 0 0 transparent; /* Bottom layer - transparent */
 
-    text-shadow:
-        1px 1px 3px rgba(0,0,0,0.3),
-        3px 3px 8px rgba(0,0,0,0.15);
+    transition: 
+        color 0.4s ease-in-out, 
+        text-shadow 0.4s ease-in-out,
+        transform 0.4s ease-in-out; /* Smooth transition for color, shadow, and transform */
 
-    transform: perspective(1000px) translateZ(0) rotateX(0deg);
-    transform-style: preserve-3d;
-
-    transition:
-        color var(--animation-speed-normal) var(--animation-ease-in-out-quint),
-        text-shadow var(--animation-speed-normal) var(--animation-ease-in-out-quint),
-        transform var(--animation-speed-normal) var(--animation-ease-out-back);
+    transform: translateZ(0); /* Ensure hardware acceleration for smoother transforms */
+    -webkit-font-smoothing: antialiased; /* Better font rendering */
+    -moz-osx-font-smoothing: grayscale; /* Better font rendering */
 }
 
-/* --- ENHANCED H3 STYLING --- */
-h3 {
-    text-align: center;
-    font-size: 2.4em; /* Example: Smaller font size for h3 */
-    margin-bottom: var(--spacing-md); /* Example: Different margin for h3 */
-    position: relative;
-    padding-bottom: var(--spacing-sm);
-    color: var(--text-color-dark); /* You might want a slightly different shade */
-    letter-spacing: 0.025em; /* Slightly tighter letter spacing */
-    line-height: 1.3;
-
-    text-shadow:
-        0.5px 0.5px 2px rgba(0,0,0,0.2),
-        2px 2px 5px rgba(0,0,0,0.1); /* Lighter shadow for h3 */
-
-    transform: perspective(1000px) translateZ(0) rotateX(0deg);
-    transform-style: preserve-3d;
-
-    transition:
-        color var(--animation-speed-normal) var(--animation-ease-in-out-quint),
-        text-shadow var(--animation-speed-normal) var(--animation-ease-in-out-quint),
-        transform var(--animation-speed-normal) var(--animation-ease-out-back);
-}
-
-/* --- H2 ::after styling --- */
-h2::after {
-    content: '';
-    position: absolute;
-    left: 50%;
-    bottom: 0;
-    transform: translateX(-50%) scaleX(1);
-    width: 80px; /* Specific width for h2 underline */
-    height: 4px; /* Specific height for h2 underline */
-    background-color: var(--primary-color);
-    border-radius: 2px;
-
-    transition:
-        width var(--animation-speed-normal) var(--animation-ease-in-out-quint),
-        background-color var(--animation-speed-normal) var(--animation-ease-in-out-quint),
-        transform var(--animation-speed-normal) var(--animation-ease-out-back);
-}
-
-/* --- H3 ::after styling --- */
-h3::after {
-    content: '';
-    position: absolute;
-    left: 50%;
-    bottom: 0;
-    transform: translateX(-50%) scaleX(1);
-    width: 60px; /* Specific (smaller) width for h3 underline */
-    height: 3px; /* Specific (thinner) height for h3 underline */
-    background-color: var(--secondary-color); /* Different color for h3 underline */
-    border-radius: 1.5px; /* Smaller border-radius */
-
-    transition:
-        width var(--animation-speed-normal) var(--animation-ease-in-out-quint),
-        background-color var(--animation-speed-normal) var(--animation-ease-in-out-quint),
-        transform var(--animation-speed-normal) var(--animation-ease-out-back);
-}
-
-/* --- H2 Hover Effects --- */
 h2:hover {
-    color: var(--primary-color);
-    transform: perspective(1000px) translateZ(10px) rotateX(5deg) scale(1.02);
-    text-shadow:
-        2px 2px 5px rgba(0,0,0,0.4),
-        5px 5px 15px rgba(0,0,0,0.25);
-    cursor: pointer;
-}
+    color: var(--accent-color, #ffdd57); /* New color on hover (e.g., your accent color) */
+    
 
-/* --- H3 Hover Effects --- */
-h3:hover {
-    color: var(--accent-color); /* Could be another color for h3 hover */
-    transform: perspective(1000px) translateZ(8px) rotateX(4deg) scale(1.01); /* Slightly less dramatic for h3 */
-    text-shadow:
-        1.5px 1.5px 4px rgba(0,0,0,0.3),
-        4px 4px 10px rgba(0,0,0,0.2); /* Lighter hover shadow for h3 */
-    cursor: pointer;
+    transform: translateY(-2px) scale(1.02); /* Slight lift and subtle scale on hover */
 }
-
 /* --- H2 Hover ::after effects --- */
 h2:hover::after {
     width: 120px;
     background-color: var(--secondary-color);
     transform: translateX(-50%) scaleX(1.2);
 }
+/* --- ENHANCED H3 STYLING --- */
+h3 {
+    text-align: center;
+    font-size: 2.4em; /* Adjust as needed, smaller than h2 but prominent */
+    margin-bottom: var(--spacing-md);
+    position: relative; /* Keep position relative if you plan any other child elements */
+    padding-bottom: 0; /* Remove padding if no underline is present */
+    
+    /* Set H3 text color to be the same as H2 */
+    color: var(--primary-color, #007bff); /* Default color for the H2 text */
+    
+    letter-spacing: 0.025em; /* Slightly tighter letter spacing for prominence */
+    line-height: 1.3;
 
-/* --- H3 Hover ::after effects --- */
-h3:hover::after {
-    width: 90px; /* Smaller hover width for h3 */
-    background-color: var(--primary-color); /* Different hover color for h3 underline */
-    transform: translateX(-50%) scaleX(1.1); /* Less dramatic scale for h3 */
+    /* Blur tone using white/light shadows for a glowing effect */
+    text-shadow:
+        0 0 8px rgba(255, 255, 255, 0.3),   /* Primary glow, moderate intensity */
+        0 0 15px rgba(255, 255, 255, 0.15), /* Wider, softer secondary glow */
+        1px 1px 2px rgba(0, 0, 0, 0.05);    /* Very subtle dark offset for crispness (almost imperceptible), adjust or remove if pure glow desired */
+
+    /* Initial 3D transform */
+    transform: perspective(1000px) translateZ(0) rotateX(0deg);
+    transform-style: preserve-3d; /* Needed for child elements or more complex 3D */
+
+    /* Smooth transitions for all relevant properties */
+    transition:
+        color var(--animation-speed-normal) var(--animation-ease-in-out-quint),
+        text-shadow var(--animation-speed-normal) var(--animation-ease-in-out-quint),
+        transform var(--animation-speed-normal) var(--animation-ease-out-back);
 }
 
+
+/* --- H3 Hover Effects (Text and 3D) --- */
+h3:hover {
+    /* Color on hover - often a primary or accent color to draw attention */
+    color: var(--accent-color); /* Or could be var(--primary-color) for stronger emphasis */
+    
+    /* Enhanced 3D lift on hover */
+    transform: perspective(1000px) translateZ(10px) rotateX(5deg) scale(1.02); /* Slightly more pronounced lift */
+    
+    /* Stronger, brighter blur glow on hover */
+    text-shadow:
+        0 0 15px rgba(255, 255, 255, 0.6), /* More intense glow */
+        0 0 25px rgba(255, 255, 255, 0.3), /* Wider, more diffused glow */
+        2px 2px 5px rgba(0, 0, 0, 0.1);    /* Slightly more defined (subtle) dark shadow */
+    cursor: pointer; /* Indicates interactivity */
+}
 /* --- Responsive Adjustments for H2 --- */
 @media (max-width: 768px) {
     h2 {
@@ -922,10 +889,6 @@ header:hover {
     border-right: 2px solid var(--primary-color);
     width: 0;
     animation: typewriter 4s steps(40, end) infinite, blinkCursor 0.7s step-end infinite;
-    text-shadow:
-        1px 1px 0 #000,
-        2px 2px 0 #333,
-        3px 3px 0 #666;
 }
 
 /* Adjust project info h3 for smaller screens */
@@ -1042,15 +1005,39 @@ header:hover {
     font-size: 1em;
     border: none;
     border-radius: 999px; /* Fully rounded ends */
-    background: linear-gradient(135deg, #00c6ff, #0072ff); /* Blue gradient */
+    /* Subtle gradient for depth, light source from top-left */
+    background: linear-gradient(145deg, #008be6, #006acc); /* Deeper blue gradient */
     color: white;
     cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 10px rgba(0, 114, 255, 0.3); /* Soft glow */
+    transition: all 0.2s ease-in-out; /* Quicker, precise transition */
+    /* Multiple shadows for 3D effect */
+    box-shadow:
+        5px 5px 15px rgba(0, 0, 0, 0.4), /* Bottom-right dark shadow (depth) */
+        -5px -5px 15px rgba(255, 255, 255, 0.1); /* Top-left light highlight (form) */
     font-weight: 600;
     text-align: center;
+    position: relative; /* Essential for pseudo-elements or advanced effects */
+    overflow: hidden; /* Keeps internal effects contained */
+    z-index: 1;
 }
 
+.project-info .btn:hover {
+    /* Slightly less pronounced gradient to suggest being 'closer' or active */
+    background: linear-gradient(145deg, #0099ff, #0077dd);
+    box-shadow:
+        2px 2px 8px rgba(0, 0, 0, 0.3), /* Reduced shadow on hover for a 'pressed' feel */
+        -2px -2px 8px rgba(255, 255, 255, 0.08); /* Reduced highlight */
+    transform: translateY(-1px); /* Slight lift still to indicate interactivity */
+}
+
+.project-info .btn:active {
+    /* Background for 'pressed in' look */
+    background: linear-gradient(145deg, #006acc, #008be6); /* Invert or deepen gradient to simulate depression */
+    box-shadow:
+        inset 2px 2px 5px rgba(0, 0, 0, 0.5),   /* Inner shadow for "pressed in" */
+        inset -2px -2px 5px rgba(255, 255, 255, 0.05); /* Inner highlight */
+    transform: translateY(0); /* Return to original position or slightly down */
+}
 /* Mobile-friendly (small screens) */
 @media (max-width: 480px) {
     .project-info .btn {
