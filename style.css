@@ -1500,26 +1500,29 @@ header:hover {
     }
 }
 
-/* Contact Section */
+/* --- Contact Section (Main Container for the form) --- */
 .contact-section {
     background-color: var(--bg-medium);
     padding-bottom: var(--spacing-lg);
+    padding-top: var(--spacing-lg); /* Add padding top for better spacing */
 }
 
 /* Adjust contact section padding for smaller screens */
 @media (max-width: 768px) {
     .contact-section {
         padding-bottom: var(--spacing-mobile-lg);
+        padding-top: var(--spacing-mobile-lg);
     }
 }
 @media (max-width: 480px) {
     .contact-section {
         padding-bottom: var(--spacing-mobile-md);
+        padding-top: var(--spacing-mobile-md);
     }
 }
 
-
-#contact-form {
+/* --- Query Form Styling --- */
+.query-form { /* This targets the form itself, replacing #contact-form implicitly */
     max-width: 700px;
     margin: 0 auto var(--spacing-xl) auto; /* Base bottom margin */
     background-color: var(--bg-light);
@@ -1528,21 +1531,25 @@ header:hover {
     box-shadow: 0 10px 30px var(--shadow-medium);
 }
 
-/* Adjust contact form padding and margin for smaller screens */
+/* Adjust query form padding and margin for smaller screens */
 @media (max-width: 768px) {
-    #contact-form {
+    .query-form {
         padding: var(--spacing-md);
         margin-bottom: var(--spacing-lg);
     }
 }
 @media (max-width: 480px) {
-    #contact-form {
+    .query-form {
         padding: var(--spacing-mobile-md);
         margin-bottom: var(--spacing-mobile-xl); /* Keep some space at the very bottom */
     }
 }
 
-#contact-form label {
+.query-form .form-group {
+    margin-bottom: 20px; /* Space between form groups */
+}
+
+.query-form label { /* Targets labels within the form */
     display: block;
     margin-bottom: 12px;
     font-weight: bold;
@@ -1552,98 +1559,174 @@ header:hover {
 
 /* Adjust form label font size for smaller screens */
 @media (max-width: 480px) {
-    #contact-form label {
+    .query-form label {
         font-size: 1em;
         margin-bottom: 8px;
     }
 }
 
-
-#contact-form input[type="text"],
-#contact-form input[type="email"],
-#contact-form textarea {
+/* Input and Textarea Styling */
+.query-form input[type="text"],
+.query-form input[type="email"],
+.query-form textarea {
     width: 100%;
     padding: 15px;
-    margin-bottom: 30px; /* Base margin */
+    margin-bottom: 30px; /* Base margin below each input/textarea */
     border: 2px solid var(--border-color);
     border-radius: 8px;
     font-size: 1.1em;
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
     background-color: var(--bg-light);
+    box-sizing: border-box; /* Ensures padding doesn't add to total width */
 }
 
 /* Adjust form input/textarea padding and margin for smaller screens */
 @media (max-width: 480px) {
-    #contact-form input[type="text"],
-    #contact-form input[type="email"],
-    #contact-form textarea {
+    .query-form input[type="text"],
+    .query-form input[type="email"],
+    .query-form textarea {
         padding: 10px;
         margin-bottom: 20px; /* Reduced margin */
         font-size: 1em;
     }
 }
 
-
-#contact-form input:focus,
-#contact-form textarea:focus {
+/* Focus state for inputs and textarea */
+.query-form input:focus,
+.query-form textarea:focus {
     border-color: var(--primary-color);
-    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.2);
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.2); /* Assuming primary-color maps to a blue-ish tone */
     outline: none;
 }
 
-#contact-form textarea {
+.query-form textarea {
     resize: vertical;
     min-height: 150px;
 }
 
 /* Adjust textarea min-height for smaller screens */
 @media (max-width: 480px) {
-    #contact-form textarea {
+    .query-form textarea {
         min-height: 100px;
     }
 }
 
-
-#contact-form button[type="submit"] {
-    width: auto;
-    display: block;
-    margin: 0 auto;
+/* Submit Button Styling */
+.query-form button[type="submit"] {
+    width: auto; /* Uses content width */
+    display: block; /* Takes full width and centers */
+    margin: 0 auto; /* Centers the button horizontally */
+    /* Inherits padding, font, color, etc. from .btn primary-btn */
 }
-/* Already responsive due to `width: auto; display: block; margin: 0 auto;` from `.btn` */
 
 
-.contact-info {
+/* --- Admin Panel Styles --- */
+.admin-access-section {
+    padding: var(--spacing-md) 0;
     text-align: center;
-    margin-top: var(--spacing-lg);
-    padding: var(--spacing-md);
+    background-color: var(--bg-medium);
+}
+
+.admin-panel-section {
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    padding: var(--spacing-xl) 0;
+    min-height: 50vh;
+}
+
+.admin-panel-section h2 {
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: var(--spacing-lg);
+}
+
+.admin-login-form {
+    max-width: 400px;
+    margin: 0 auto var(--spacing-lg) auto;
     background-color: var(--bg-light);
+    padding: var(--spacing-md);
+    border-radius: 10px;
+    box-shadow: 0 5px 15px var(--shadow-medium);
+    text-align: center;
+}
+
+.admin-login-form label {
+    display: block;
+    margin-bottom: 15px;
+    font-size: 1.1em;
+    color: var(--text-dark);
+}
+
+.admin-login-form input[type="password"] {
+    width: calc(100% - 20px); /* Adjust for padding */
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    font-size: 1em;
+    background-color: var(--bg-medium);
+    color: var(--text-light);
+}
+
+.admin-login-form input[type="password"]:focus {
+    border-color: var(--primary-color);
+    outline: none;
+}
+
+.admin-controls {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: var(--spacing-lg);
+}
+
+.queries-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.query-card {
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+    padding: 20px;
     border-radius: 10px;
     box-shadow: 0 2px 10px var(--shadow-light);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Pushes footer to bottom */
 }
 
-/* Adjust contact info padding and margin for smaller screens */
-@media (max-width: 480px) {
-    .contact-info {
-        margin-top: var(--spacing-md);
-        padding: var(--spacing-sm);
-    }
+.query-card h3 {
+    margin-top: 0;
+    color: var(--primary-color);
+    font-size: 1.2em;
+    margin-bottom: 10px;
 }
 
-.contact-info p {
-    margin-bottom: var(--spacing-sm); /* Original had missing value, assuming small spacing */
-    font-size: 1em; /* Ensure this is readable */
+.query-card p {
+    margin-bottom: 8px;
+    line-height: 1.5;
 }
 
-/* Adjust contact info paragraph font size for smaller screens */
-@media (max-width: 480px) {
-    .contact-info p {
-        font-size: 0.9em;
-        margin-bottom: var(--spacing-xs);
-    }
+.query-card .query-meta {
+    font-size: 0.85em;
+    color: var(--text-medium);
+    margin-top: 15px;
+    border-top: 1px solid var(--border-color);
+    padding-top: 10px;
 }
 
-/* Add a basic footer for full example
-*/
+.query-card .query-meta strong {
+    color: var(--text-dark);
+}
+
+/* Utility class */
+.hidden {
+    display: none !important;
+}
+
+/* --- Footer Styling (retained from your provided code) --- */
 footer {
     background-color: var(--bg-dark);
     color: var(--text-light);
@@ -1656,117 +1739,524 @@ footer p {
     margin: 0;
 }
 
-/* General body font size adjustment for very small screens */
+/* General body font size adjustment for very small screens (retained) */
 @media (max-width: 360px) {
     body {
         font-size: 15px; /* Slightly reduce base font size for extremely small devices */
     }
 }
-/* Container with 3D Shadow + Float Animation */
-.email-container {
-background: linear-gradient(135deg, #1f2937, #374151);
-  padding: 2.5rem;
-  border-radius: 20px;
-  box-shadow:
-    0 10px 30px rgba(0, 0, 0, 0.2), /* strong bottom shadow */
-    0 -5px 15px rgba(255, 255, 255, 0.3); /* subtle top light */
-  max-width: 600px;
-  margin: 4rem auto;
-  text-align: center;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  animation: float 4s ease-in-out infinite, fadeInUp 1s ease-out;
-  transform-style: preserve-3d;
-}
-
-/* Email Row */
-.email-row {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-  flex-wrap: wrap;
-  font-size: 1.3rem;
-  color: #1f2937;
-}
-
-/* Label Styling with Pop-In Animation */
-.label {
-  font-weight: 600;
-  color: #2563eb;
-  transform: translateY(40px) rotateX(90deg);
-  opacity: 0;
-  animation: popIn 0.8s forwards 0.3s;
-  backface-visibility: hidden;
-}
-
-/* Email Link with Glow and Hover Elevation */
-.email-link {
-  position: relative;
-  color: #10b981;
-  font-weight: bold;
-  text-decoration: none;
-  padding: 4px 6px;
-  opacity: 0;
-  transform: translateY(40px) rotateX(90deg);
-  animation: popIn 0.8s forwards 0.5s;
-  transition: all 0.3s ease;
-  backface-visibility: hidden;
-}
-
-.email-link::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 0%;
-  height: 2px;
-  background: #10b981;
-  transition: width 0.4s ease;
-}
-
-.email-link:hover::after {
-  width: 100%;
-}
-
-.email-link:hover {
-  color: #0f766e;
-  transform: scale(1.08);
-  text-shadow: 0 2px 8px rgba(16, 185, 129, 0.5);
-}
-
-/* Animations */
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0px) rotateX(0);
-  }
-  50% {
-    transform: translateY(-10px) rotateX(2deg);
-  }
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes popIn {
-  to {
-    transform: translateY(0) rotateX(0);
-    opacity: 1;
-  }
-}
-
-/* Responsive */
-@media (max-width: 500px) {
-  .email-row {
+/* --- Notification Styles --- */
+#notification-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000; /* Ensure it's above other content */
+    display: flex;
     flex-direction: column;
-    text-align: center;
-  }
+    gap: 10px;
+    pointer-events: none; /* Allows clicks to pass through container, if it's empty */
 }
 
+.notification {
+    background-color: var(--dark-bg); /* Use your theme's dark background */
+    color: var(--text-light); /* Light text color */
+    padding: 15px 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    font-size: 1em;
+    min-width: 250px;
+    max-width: 350px;
+    opacity: 0; /* Start hidden */
+    transform: translateY(20px); /* Start slightly below */
+    pointer-events: all; /* Make individual notifications interactive */
+    border-left: 5px solid; /* For success/error color */
+    /* Animation properties set by JS dynamically for removal */
+}
+
+/* Specific notification types */
+.notification.success {
+    border-color: #28a745; /* Green for success */
+}
+
+.notification.error {
+    border-color: #dc3545; /* Red for error */
+}
+
+.notification.info {
+    border-color: #007bff; /* Blue for info */
+}
+
+
+/* Keyframe Animations */
+@keyframes fadeInSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeOutSlideDown {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+}
+/* --- Notification Styles (Keep as is from previous update) --- */
+#notification-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    pointer-events: none;
+}
+
+.notification {
+    background-color: var(--dark-bg);
+    color: var(--text-light);
+    padding: 15px 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    font-size: 1em;
+    min-width: 250px;
+    max-width: 350px;
+    opacity: 0;
+    transform: translateY(20px);
+    pointer-events: all;
+    border-left: 5px solid;
+}
+
+.notification.success {
+    border-color: #28a745;
+}
+
+.notification.error {
+    border-color: #dc3545;
+}
+
+.notification.info {
+    border-color: #007bff;
+}
+
+@keyframes fadeInSlideUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeOutSlideDown {
+    from { opacity: 1; transform: translateY(0); }
+    to { opacity: 0; transform: translateY(20px); }
+}
+
+/* --- Modal Styles (NEW) --- */
+#modal-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000; /* Above notifications */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+#modal-container.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    max-width: 500px;
+    width: 90%;
+    text-align: center;
+    transform: translateY(-50px);
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+#modal-container.active .modal-content {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.modal-content h3 {
+    color: var(--primary-color);
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.modal-content input[type="password"],
+.modal-content input[type="text"] { /* For generic modal inputs */
+    width: calc(100% - 20px);
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    font-size: 1em;
+    background-color: var(--bg-medium);
+    color: var(--text-light);
+}
+
+.modal-content input[type="password"]:focus,
+.modal-content input[type="text"]:focus {
+    border-color: var(--primary-color);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.2);
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.modal-buttons .btn {
+    padding: 10px 25px;
+    font-size: 1em;
+}
+
+.modal-buttons .btn-danger {
+    background-color: #dc3545;
+}
+.modal-buttons .btn-danger:hover {
+    background-color: #c82333;
+}
+
+
+/* --- Admin Panel Content Enhancements (NEW/MODIFIED) --- */
+.admin-panel-section {
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    padding: var(--spacing-xl) 0;
+    min-height: 70vh; /* Increased height */
+}
+
+.admin-panel-section h2 {
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: var(--spacing-lg);
+}
+
+.admin-controls-bar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--spacing-sm); /* Using variable for consistent spacing */
+    margin-bottom: var(--spacing-lg);
+    padding: var(--spacing-md); /* Using variable for consistent padding */
+    background-color: var(--bg-medium);
+    border-radius: 12px; /* Slightly more rounded corners for a modern look */
+    box-shadow: 0 4px 15px var(--shadow-dark); /* More pronounced, professional shadow */
+    transition: box-shadow 0.3s ease; /* Smooth transition for shadow */
+}
+
+.admin-controls-bar:hover {
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3); /* Slightly stronger shadow on hover */
+}
+
+.admin-controls-bar input[type="text"] {
+    flex-grow: 1;
+    padding: 12px 15px; /* Increased padding for better touch targets and visual space */
+    border: 1px solid var(--border-color);
+    border-radius: 25px; /* **Circular shape for input ends** */
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+    max-width: 350px; /* Slightly increased max-width for usability */
+    font-size: 1em; /* Ensure consistent font size */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.admin-controls-bar input[type="text"]:focus {
+    border-color: var(--primary-color);
+    outline: none; /* Remove default outline */
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25); /* More prominent focus ring */
+}
+
+.admin-controls-bar .sort-options {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs); /* Tighter spacing for label and select */
+}
+
+.admin-controls-bar .sort-options label {
+    margin-right: 0; /* Removed fixed margin, now controlled by gap */
+    color: var(--text-light);
+    font-weight: 500; /* Slightly bolder label for emphasis */
+}
+
+.admin-controls-bar .sort-options select {
+    padding: 10px 35px 10px 15px; /* Increased padding, extra space for custom arrow */
+    border-radius: 25px; /* **Circular shape for select ends** */
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+    cursor: pointer;
+    font-size: 1em;
+    appearance: none; /* Remove default arrow for custom styling */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%236c757d'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E"); /* Custom SVG arrow */
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 20px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.admin-controls-bar .sort-options select:focus {
+    border-color: var(--primary-color);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+}
+
+.admin-controls-bar .btn {
+    padding: 10px 22px; /* Slightly adjusted padding for buttons */
+    font-size: 0.95em; /* Slightly larger font size for readability */
+    border-radius: 25px; /* **Circular shape for button ends** */
+    font-weight: 600; /* Bolder text for buttons */
+    white-space: nowrap; /* Prevent text wrapping */
+}
+
+.queries-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* Increased min-width for cards */
+    gap: var(--spacing-md); /* Consistent gap using variable */
+    margin-top: var(--spacing-md); /* Consistent margin using variable */
+}
+
+.query-card {
+    background-color: var(--bg-light); /* Consistent light background for cards */
+    color: var(--text-dark);
+    padding: var(--spacing-md); /* Consistent padding */
+    border-radius: 12px; /* Slightly more rounded corners */
+    box-shadow: 0 4px 15px var(--shadow-light); /* More pronounced, but light shadow */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.query-card:hover {
+    transform: translateY(-3px); /* Subtle lift effect */
+    box-shadow: 0 8px 25px var(--shadow-dark); /* Stronger shadow on hover */
+}
+
+.query-card h3 {
+    margin-top: 0;
+    color: var(--primary-color);
+    font-size: 1.3em; /* Slightly adjusted size */
+    margin-bottom: var(--spacing-sm);
+    line-height: 1.3; /* Improved line height */
+}
+
+.query-card p {
+    margin-bottom: var(--spacing-xs);
+    line-height: 1.6; /* Improved line height for readability */
+    font-size: 0.95em; /* Slightly larger font size */
+    color: var(--text-dark); /* Ensure dark text on light card background */
+}
+
+.query-card .query-meta {
+    font-size: 0.85em; /* Maintained size for metadata */
+    color: var(--text-medium);
+    margin-top: var(--spacing-md); /* More space above meta section */
+    border-top: 1px solid var(--border-color);
+    padding-top: var(--spacing-sm);
+}
+
+.query-card .query-meta strong {
+    color: var(--text-dark); /* Ensure strong text is dark on light background */
+    font-weight: 600; /* Make strong text bolder */
+}
+
+/* Reply Button (within query card) */
+.query-card .btn-reply {
+    margin-top: var(--spacing-md); /* More space from message */
+    background-color: var(--primary-color);
+    color: var(--text-light); /* Text light on primary color background */
+    border: none;
+    padding: 10px 20px; /* Consistent button padding */
+    border-radius: 25px; /* **Circular shape for reply button ends** */
+    cursor: pointer;
+    font-size: 0.95em; /* Consistent button font size */
+    text-decoration: none;
+    display: inline-block;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    font-weight: 600;
+}
+
+.query-card .btn-reply:hover {
+    background-color: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+}
+
+/* Delete Button for individual queries */
+.query-card .btn-delete-single {
+    position: absolute;
+    top: var(--spacing-sm);
+    right: var(--spacing-sm);
+    background-color: var(--danger-color);
+    color: white;
+    border: none;
+    border-radius: 50%; /* Maintains perfect circle */
+    width: 32px; /* Slightly larger target */
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    line-height: 1;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Subtle shadow for circular button */
+}
+
+.query-card .btn-delete-single:hover {
+    background-color: #c82333; /* Darker red on hover */
+    transform: scale(1.1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Stronger shadow on hover */
+}
+.query-card {
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px var(--shadow-light);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative; /* For delete button positioning */
+}
+
+.query-card h3 {
+    margin-top: 0;
+    color: var(--primary-color);
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+.query-card p {
+    margin-bottom: 8px;
+    line-height: 1.5;
+}
+
+.query-card .query-meta {
+    font-size: 0.85em;
+    color: var(--text-medium);
+    margin-top: 15px;
+    border-top: 1px solid var(--border-color);
+    padding-top: 10px;
+}
+
+.query-card .query-meta strong {
+    color: var(--text-dark);
+}
+
+/* Reply Button */
+.query-card .btn-reply {
+    margin-top: 10px;
+    background-color: var(--primary-color, #007bff);
+    color: var(--text-light);
+    border: none;
+    padding: 8px 15px;
+    border-radius: 25px; /* Made the ends circular */
+    cursor: pointer;
+    font-size: 0.9em;
+    text-decoration: none;
+    display: inline-block;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+.query-card .btn-reply:hover {
+    background-color: var(--primary-dark, #0056b3);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Delete Button for individual queries */
+.query-card .btn-delete-single {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 50%; /* Make it round */
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    line-height: 1; /* Adjust for better centering of 'x' */
+}
+
+.query-card .btn-delete-single:hover {
+    background-color: #c82333;
+    transform: scale(1.1);
+}
+
+/* Loading Spinner */
+.loading-spinner {
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    border-top: 4px solid var(--primary-color);
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    animation: spin 1s linear infinite;
+    margin: 20px auto;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+
+/* Utility class */
+.hidden {
+    display: none !important;
+}
+
+/* --- Footer Styling (retained from your provided code) --- */
+footer {
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    text-align: center;
+    padding: var(--spacing-md) 0;
+    font-size: 0.9em;
+}
+
+footer p {
+    margin: 0;
+}
+
+/* General body font size adjustment for very small screens (retained) */
+@media (max-width: 360px) {
+    body {
+        font-size: 15px;
+    }
+}
