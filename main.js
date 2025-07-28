@@ -323,3 +323,117 @@ document.addEventListener('DOMContentLoaded', () => {
 
     
 });
+document.addEventListener('DOMContentLoaded', () => {
+    console.log('Script: DOMContentLoaded event fired. Starting initialization.');
+
+    const quotes = [
+        "True innovation isn't measured by action alone—it flourishes where vision meets interaction, where every pixel becomes a bridge between imagination and experience.",
+        "The best way to predict the future is to create it. Let's code your vision into reality.",
+        "Great things are done by a series of small things brought together. Your project is our next great thing.",
+        "Collaboration is the key to unlocking new possibilities. Together, we can build anything.",
+        "In every line of code, there's an opportunity to create something truly impactful."
+    ];
+
+    const buttonTexts = [
+        "Discover What's Possible",
+        "Partner for Innovation",
+        "Realize Your Project's Potential",
+        "Ignite Your Digital Success",
+        "Build Beyond Expectations",
+        "Elevate Your Brand Online",
+        "Craft Your Strategic Advantage",
+        "Transform Concepts into Reality",
+        "Unleash Your Project's Future",
+        "Initiate Your Next Big Idea"
+    ];
+
+    const quoteElement = document.getElementById('collaborationQuote');
+    const buttonContainer = document.getElementById('buttonContainer');
+
+    // --- Critical Check: Ensure elements are found ---
+    if (!quoteElement) {
+        console.error('Script Error: Quote element with ID "collaborationQuote" not found in the DOM.');
+        return;
+    }
+    if (!buttonContainer) {
+        console.error('Script Error: Button container with ID "buttonContainer" not found in the DOM.');
+        return;
+    }
+    console.log('Script: Quote and Button container elements found successfully.');
+
+    // --- Create the button element dynamically ---
+    const buttonElement = document.createElement('a');
+    buttonElement.href = "mailto:codersingh94@gmail.com?subject=Initiating a Custom Web Project&body=Dear Ramandeep Singh,%0A%0AI hope you're doing well.%0A%0AI’m reaching out to explore the possibility of developing a customized web project geared towards my specific needs. I'm looking for a digital solution that reflects my goals, engages effectively with users, and offers a seamless experience across all platforms.%0A%0AIf you're available to discuss this further, I’d love to connect and explore how we can collaborate to bring this project to life with a focus on quality, functionality, and thoughtful design.%0A%0ALooking forward to hearing from you.%0A%0ABest regards,%0A[Your Name]";
+    buttonElement.className = "btn primary-btn";
+    buttonContainer.appendChild(buttonElement);
+    console.log('Script: Button element created and appended to DOM.');
+
+    let currentQuoteIndex = 0;
+
+    const style = getComputedStyle(document.documentElement);
+    const fadeDuration = parseFloat(style.getPropertyValue('--fade-duration')) * 1000 || 0;
+    console.log(`Script: Retrieved --fade-duration from CSS: ${fadeDuration / 1000}s`);
+
+    // --- Optimized: Single interval for both initial and subsequent changes ---
+    const displayInterval = 5000; // 5 seconds total for each cycle (display + fade)
+
+    // Function to update content and trigger fade-in
+    function updateQuoteAndButtonContent() {
+        console.log(`Script: Updating content. Current index: ${currentQuoteIndex}`);
+
+        // Increment index, loop back to 0 if at end of array
+        // Make sure to handle the case where buttonTexts and quotes have different lengths
+        currentQuoteIndex = (currentQuoteIndex + 1) % Math.max(quotes.length, buttonTexts.length);
+
+        // Apply new text content, ensuring we don't go out of bounds if arrays are different lengths
+        quoteElement.textContent = quotes[currentQuoteIndex % quotes.length];
+        buttonElement.textContent = buttonTexts[currentQuoteIndex % buttonTexts.length];
+
+        // Remove fade-out-text class to fade in the button text
+        buttonElement.classList.remove('fade-out-text');
+
+        // Ensure visibility and apply pseudo-element classes for quote marks
+        quoteElement.style.opacity = '1';
+        quoteElement.classList.add('show-opening-mark');
+        quoteElement.classList.add('show-closing-mark');
+        console.log(`Script: Content updated to index ${currentQuoteIndex}. Opacity set to 1.`);
+    }
+
+    // Function to initiate fade-out and then content change
+    function initiateContentChange() {
+        console.log('Script: Initiating content change (fade-out).');
+        // Start fade-out effect for the quote text
+        quoteElement.style.opacity = '0';
+        quoteElement.classList.remove('show-opening-mark');
+        quoteElement.classList.remove('show-closing-mark');
+
+        // Add fade-out-text class to fade out the button text
+        buttonElement.classList.add('fade-out-text');
+
+        // After the fade-out duration, update the content and fade it back in
+        setTimeout(updateQuoteAndButtonContent, fadeDuration);
+        console.log(`Script: Fade-out initiated. Next content update in ${fadeDuration}ms.`);
+    }
+
+    // --- Initial setup on page load ---
+    currentQuoteIndex = 0; // Ensure it starts at the first element
+    quoteElement.textContent = quotes[currentQuoteIndex];
+    buttonElement.textContent = buttonTexts[currentQuoteIndex]; // Set initial text for the button
+
+    // Ensure initial visibility for both
+    quoteElement.style.opacity = '1';
+    quoteElement.classList.add('show-opening-mark');
+    quoteElement.classList.add('show-closing-mark');
+    buttonElement.classList.remove('fade-out-text'); // Ensures it starts visible
+
+    console.log(`Script: Initial content set to index ${currentQuoteIndex}.`);
+
+    // --- Schedule continuous changes every 'displayInterval' + 'fadeDuration' ---
+    // The first change will occur after this total duration.
+    // If you want the *first* display to be 5 seconds, then the subsequent calls
+    // should happen after the (displayInterval - fadeDuration)
+    // To keep it simple and consistent: The cycle length (display + fade) is 5 seconds.
+    setInterval(initiateContentChange, displayInterval); // Cycle every 5 seconds including fade
+
+    console.log('Script: Initialization complete.');
+});
