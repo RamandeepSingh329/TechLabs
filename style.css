@@ -2520,3 +2520,98 @@ footer p {
 .banner-section.banner--light .btn.secondary-btn:hover {
   background: linear-gradient(135deg, #30b8f5, #7dd3fc);
 }
+/* ================== Project Inquiry Form Section ================== */
+.contact-section {
+    padding: 4rem 2rem;
+    background: linear-gradient(145deg, #f7f9fc, #e9eff8);
+    border-radius: 16px;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.1);
+    width: 100%; 
+    margin: 3rem 0;
+    font-family: 'Roboto', sans-serif;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+/* Container inside section to limit content width */
+.contact-section .container {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+/* Form Styling */
+#projectInquiryForm {
+    display: flex;
+    flex-direction: column;
+    gap: 1.8rem;
+}
+
+/* Form Group Styling */
+#projectInquiryForm .form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Label Styling */
+#projectInquiryForm label {
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    color: #1a237e;
+    font-size: 15px;
+}
+
+/* Inputs, Selects, Textarea Styling */
+#projectInquiryForm input,
+#projectInquiryForm select,
+#projectInquiryForm textarea {
+    padding: 14px 20px;
+    border: 1px solid #ccc;
+    border-radius: 50px; /* fully rounded */
+    font-size: 14px;
+    transition: all 0.3s ease;
+    background-color: #fff;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
+}
+
+/* Focus Animation */
+#projectInquiryForm input:focus,
+#projectInquiryForm select:focus,
+#projectInquiryForm textarea:focus {
+    outline: none;
+    border-color: #1a237e;
+    box-shadow: 0 0 12px rgba(26,35,126,0.25);
+}
+/* Button Styling */
+#projectInquiryForm button {
+    padding: 14px 30px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+    background: #1a237e;
+    border: none;
+    border-radius: 50px; /* rounded button */
+    cursor: pointer;
+    transition: all 0.3s ease, box-shadow 0.3s ease;
+    align-self: center; /* center button horizontally */
+}
+
+/* Button Hover Animation */
+#projectInquiryForm button:hover {
+    background: #3949ab;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 18px rgba(26,35,126,0.35);
+}
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .contact-section {
+        padding: 3rem 1.5rem;
+    }
+
+    #projectInquiryForm button {
+        width: 100%;
+        text-align: center;
+    }
+}

@@ -101,6 +101,52 @@ Driven by a team of passionate frontend developers, UI/UX designers, and web tec
                         <a href="https://github.com/dashboard" target="_blank" aria-label="Github Profile"><img class="social-icon" src="assets/github.jpg" alt="Gituhb"></a>
                     </div>
         </section>
+<section id="contact" class="section contact-section">
+  <div class="container">
+    <h2>Project Inquiry Form</h2>
+    <p>Fill out the form below to start your project with DigitalFusion.</p>
+    <form id="projectInquiryForm">
+      <div class="form-group">
+        <label for="clientName">Client Name:</label>
+        <input type="text" id="clientName" name="clientName" required placeholder="Your Full Name">
+      </div>
+
+      <div class="form-group">
+        <label for="clientEmail">Email Address:</label>
+        <input type="email" id="clientEmail" name="clientEmail" required placeholder="you@example.com">
+      </div>
+
+      <div class="form-group">
+        <label for="projectType">Type of Project:</label>
+        <select id="projectType" name="projectType" required>
+          <option value="" disabled selected>Select Project Type</option>
+          <option value="Website Development">Website Development</option>
+          <option value="Web App">Web App</option>
+          <option value="UI/UX Design">UI/UX Design</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="projectRequirements">Project Requirements:</label>
+        <textarea id="projectRequirements" name="projectRequirements" rows="6" required placeholder="Describe your requirements in detail..."></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="sdlcModel">Preferred SDLC Model:</label>
+        <select id="sdlcModel" name="sdlcModel" required>
+          <option value="" disabled selected>Select SDLC Model</option>
+          <option value="Waterfall">Waterfall</option>
+          <option value="Agile">Agile</option>
+          <option value="Scrum">Scrum</option>
+          <option value="Iterative">Iterative</option>
+        </select>
+      </div>
+
+      <button type="submit" class="btn primary-btn">Submit & Email</button>
+    </form>
+  </div>
+</section>
 
         <section id="resources" class="section resources-section">
             <div class="container">
@@ -155,6 +201,7 @@ Driven by a team of passionate frontend developers, UI/UX designers, and web tec
             </div>
         </div>
     </footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
     <script src="main.js"></script>
 </body>

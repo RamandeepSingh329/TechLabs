@@ -437,3 +437,88 @@ document.addEventListener('DOMContentLoaded', () => {
 
     console.log('Script: Initialization complete.');
 });
+// ================= Frontend SDLC Descriptions =================
+const sdlcDescriptions = {
+    Waterfall: "Waterfall in frontend development follows a linear approach: requirements gathering, UI,UX design, static layout implementation (HTML,CSS), interactivity with JavaScript, testing, and deployment. It's ideal for projects with fixed designs and minimal changes.",
+    
+    Agile: "Agile frontend development emphasizes iterative design and rapid prototyping. UI components, layouts, and interactions are developed incrementally, allowing continuous feedback, responsive adjustments, and faster delivery of functional interfaces.",
+    
+    Scrum: "Scrum applies Agile principles for frontend teams, breaking development into sprints. Each sprint delivers usable UI components, interactive features, and tested pages. Regular reviews ensure that design, responsiveness, and user experience meet client expectations.",
+    
+    Iterative: "Iterative frontend development focuses on repeated cycles: design, implement, test, and refine. Each iteration improves layouts, enhances interactions, and optimizes performance, allowing gradual evolution of the web interface until it meets high-quality standards."
+};
+// ================= References to form elements =================
+const form = document.getElementById("projectInquiryForm");
+const sdlcSelect = document.getElementById("sdlcModel");
+
+// ================= SDLC Description Display =================
+const sdlcDisplay = document.createElement("p");
+sdlcDisplay.style.fontStyle = "italic";
+sdlcDisplay.style.color = "#1a237e";
+sdlcDisplay.style.marginTop = "5px";
+sdlcSelect.parentNode.appendChild(sdlcDisplay);
+
+// Event listener to display description and read aloud when SDLC model changes
+sdlcSelect.addEventListener("change", () => {
+    const selectedModel = sdlcSelect.value;
+    const description = sdlcDescriptions[selectedModel] || "No description available for this SDLC model.";
+    
+    // Display description on form
+    sdlcDisplay.textContent = description;
+
+    // Use AI voice to read the description
+    if ('speechSynthesis' in window) {
+        const utterance = new SpeechSynthesisUtterance(`${selectedModel} Model: ${description}`);
+        utterance.rate = 1;
+        utterance.pitch = 1;
+        window.speechSynthesis.speak(utterance);
+    }
+});
+
+// ================= Form Submission =================
+form.addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    // Get form values
+    const clientName = document.getElementById("clientName").value.trim();
+    const clientEmail = document.getElementById("clientEmail").value.trim();
+    const projectType = document.getElementById("projectType").value;
+    const projectRequirements = document.getElementById("projectRequirements").value.trim();
+    const sdlcModel = document.getElementById("sdlcModel").value;
+
+    // Validate mandatory fields
+    if (!clientName || !clientEmail || !projectType || !projectRequirements || !sdlcModel) {
+        alert("Please fill in all fields before submitting the form.");
+        return;
+    }
+
+    // SDLC description
+    const sdlcDescription = sdlcDescriptions[sdlcModel] || "No description available for selected SDLC model.";
+
+    // Prepare email content
+    const emailSubject = encodeURIComponent(`Project Inquiry from ${clientName}`);
+    const emailBody = encodeURIComponent(
+`Dear DigitalFusion Team,
+
+Please find my project inquiry details below:
+
+Client Name: ${clientName}
+Email: ${clientEmail}
+Project Type: ${projectType}
+Preferred SDLC Model: ${sdlcModel}
+
+SDLC Description:
+${sdlcDescription}
+
+Project Requirements:
+${projectRequirements}
+
+Looking forward to your response.
+
+Best regards,
+${clientName}`
+    );
+
+    // Auto redirect to email
+    window.location.href = `mailto:Ramandeep22981@outlook.com?subject=${emailSubject}&body=${emailBody}`;
+});
