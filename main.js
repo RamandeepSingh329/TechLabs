@@ -393,12 +393,14 @@ document.addEventListener('DOMContentLoaded', function() {
     // ====================== Start Interval ======================
     setInterval(initiateContentChange, displayInterval);
 });
+/* eslint-disable no-undef */
+
 // ====================== Topics with Deep Explanations ======================
 const topics = [
- {
- title: "HTML5 Basics",
- id: "html",
- description: `
+    {
+        title: "HTML5 Basics",
+        id: "html",
+        description: `
  HTML5: The Structural Core of Modern Web Applications
 
 HTML5 serves as the foundational language for structuring content on the web. It's the standard that defines the semantic meaning and organization of every page, providing the essential framework upon which all other technologies are built.
@@ -408,11 +410,11 @@ Advanced Forms and Inputs: HTML5 introduced a new generation of input types desi
 Native Multimedia Support: A key advancement of HTML5 was the native inclusion of multimedia capabilities. The <audio> and <video> tags allow for direct embedding of media without relying on third-party plugins like Flash. This not only improves security and performance but also ensures a consistent user experience across different browsers and devices. The <source> tag enables developers to provide multiple file formats (e.g., MP4, WebM) to guarantee playback on all modern browsers.
 Web Storage APIs: The localStorage and sessionStorage APIs provide a robust mechanism for client-side data persistence. This capability is fundamental for building modern web applications that are responsive and can function offline. A common real-world use case is using localStorage to save a user's theme preference or the contents of a shopping cart, ensuring the data persists even after the browser is closed.
 `
- },
- {
- title: "CSS & Styling",
- id: "css",
- description: `
+    },
+    {
+        title: "CSS & Styling",
+        id: "css",
+        description: `
  CSS: The Language of Visual Presentation
 
 CSS, or Cascading Style Sheets, is the declarative language used to define the visual styling and layout of a web page. It transforms structured HTML content into a cohesive, aesthetically pleasing, and responsive user interface.
@@ -422,11 +424,11 @@ Dynamic Styling and Theming: Beyond basic colors and fonts, CSS offers advanced 
 Media Queries and Responsive Design: Media queries are the cornerstone of responsive web design. They allow developers to apply different styles based on the characteristics of a device, such as its screen width, height, or orientation. A real-time example is a website that displays a horizontal navigation menu on a desktop screen but transforms it into a collapsible "hamburger" menu on a smaller mobile device, optimizing the user experience for each viewport.
 Animations and Transitions: CSS provides powerful tools for enhancing user interaction through motion. Transitions enable smooth state changes, such as a button gracefully changing color on hover, providing subtle visual feedback. Animations, on the other hand, allow for complex, keyframed sequences, ideal for creating engaging effects like a looping loading spinner or a hero image that fades in dynamically.
 `
- },
- {
- title: "JavaScript Essentials",
- id: "javascript",
- description: `
+    },
+    {
+        title: "JavaScript Essentials",
+        id: "javascript",
+        description: `
  JavaScript: The Engine of Interactivity
 
 JavaScript is a versatile, high-level programming language that makes web pages dynamic and interactive. It enables complex behaviors, from real-time data updates to seamless user interactions, effectively serving as the application logic layer.
@@ -436,11 +438,11 @@ DOM Manipulation: The Document Object Model (DOM) is a programming interface for
 Event Handling: Event listeners are a core part of creating an interactive user experience. They non-invasively wait for a user action—be it a click, a keyboard press, or a mouse hover—and then execute a specific function in response. This allows for a clean separation of concerns, where the logic for a user interaction is handled independently of the HTML structure.
 Asynchronous Programming: Modern web applications frequently need to fetch data from external APIs without freezing the user interface. Asynchronous programming is the solution to this challenge. Promises and the async/await syntax provide a clean, readable way to handle these non-blocking operations. A real-world scenario involves fetching a user's profile information from a server; async/await allows the code to "wait" for the data to return before processing it, while the rest of the application remains responsive to the user.
 `
-},
- {
-title: "Modern JS Frameworks",
- id: "frameworks",
- description: `
+    },
+    {
+        title: "Modern JS Frameworks",
+        id: "frameworks",
+        description: `
  Modern JavaScript Frameworks: Building Scalable Applications
 
 For large-scale projects and Single-Page Applications (SPAs), managing complex state and a growing number of components can be a challenge. Modern JavaScript frameworks provide a structured, efficient, and scalable approach to development.
@@ -450,11 +452,11 @@ Vue: Vue is praised for its incremental adoptability, making it a flexible choic
 Angular: Angular is a comprehensive, opinionated framework built with TypeScript, which adds static typing for improved code quality and maintainability. Its architecture is well-suited for enterprise-level applications, providing a full suite of built-in features for everything from routing and state management to dependency injection.
 State Management Solutions: As applications grow, sharing data across disparate components becomes a significant challenge. Libraries like Redux or framework-specific solutions like Vuex and React's Context API address this by providing a centralized "store" for shared application data. This eliminates the need for "prop drilling"—passing data through many layers of components—and ensures a consistent and predictable application state.
 `
- },
- {
- title: "UI/UX Design",
- id: "uiux",
- description: `
+    },
+    {
+        title: "UI/UX Design",
+        id: "uiux",
+        description: `
  UI/UX Design: Crafting the User Experience
 
 UI and UX are two complementary disciplines that are critical to the success of any digital product. UI (User Interface) design focuses on the visual and interactive elements, while UX (User Experience) design encompasses the entire user journey, ensuring a product is intuitive, efficient, and enjoyable to use.
@@ -463,34 +465,35 @@ Wireframing and Prototyping: These are essential steps in the design thinking pr
 Accessibility Standards: Accessibility is no longer a best practice—it's a legal and ethical imperative. Adhering to standards like the Web Content Accessibility Guidelines (WCAG) ensures that a site is usable by people with disabilities. This includes practices like providing meaningful alt text for images and ensuring full keyboard navigation, allowing all users to interact with your content.
 User Testing: The most reliable way to validate a design is through user testing. By observing real users as they interact with a product, designers can gather valuable qualitative and quantitative data. This iterative process of testing, feedback, and refinement is crucial for identifying pain points, validating assumptions, and continuously improving the user experience.
 `
- },
- {
- title: "About Manmeet Kaur",
- id: "Manmeet Kaur",
-description: `
+    },
+    {
+        title: "About Manmeet Kaur",
+        id: "Manmeet Kaur",
+        description: `
+        Great! Here's About Manmeet Kaur
  Kickstart Your NET Success with Manmeet Kaur!
 Ready to conquer the UGC NET in Computer Science? 
 Join Manmeet Kaur, a celebrated educator with 8+ years of teaching at top universities, for an electrifying learning journey! Experience a high-performance curriculum crafted for speed, clarity, and maximum results. Unlock insider strategies that have helped countless students achieve top scores. Don’t just prepare—excel, confidently and effectively! 
 `
- },
- {
- title: "About DigitalFusion",
- id: "digitalfusion",
- description: `
+    },
+    {
+        title: "About DigitalFusion",
+        id: "digitalfusion",
+        description: `
  DigitalFusion: Pioneering Frontend Innovation
 
 DigitalFusion is a Frontend Innovation Hub committed to delivering exceptional digital experiences. We believe in the power of frontend technology to transform business ideas into immersive and high-performance applications. Our mission is to empower organizations by building responsive, intuitive, and visually stunning user interfaces that not only meet but exceed end-user expectations.
 `
- },
- {
- title: "About Ramandeep Singh",
- id: "ramandeep",
- description: `
+    },
+    {
+        title: "About Ramandeep Singh",
+        id: "ramandeep",
+        description: `
  About Ramandeep Singh: A Visionary in Frontend
 
-Ramandeep Singh is the visionary founder of DigitalFusion, bringing over eight years of experience and a deep passion for frontend development and UI/UX. His philosophy is rooted in a commitment to crafting digital journeys, not just interfaces. Ramandeep believes that the true power of technology lies in its ability to blend technical excellence with creative design to solve real-world problems. His leadership and commitment to continuous learning drive DigitalFusion's mission to become a global benchmark for innovation in the frontend space.
+Ramandeep Singh is the visionary founder of DigitalFusion, bringing over three years + of experience and a deep passion for frontend development and UI/UX. His philosophy is rooted in a commitment to crafting digital journeys, not just interfaces. Ramandeep believes that the true power of technology lies in its ability to blend technical excellence with creative design to solve real-world problems. His leadership and commitment to continuous learning drive DigitalFusion's mission to become a global benchmark for innovation in the frontend space.
 `
- }
+    }
 ];
 
 const topicSelect = document.getElementById('topicSelect');
@@ -502,46 +505,46 @@ let currentTopicIndex = -1;
 
 // Populate dropdown
 topics.forEach((topic, index) => {
- const option = document.createElement('option');
- option.value = index;
- option.textContent = topic.title;
-topicSelect.appendChild(option);
+    const option = document.createElement('option');
+    option.value = index;
+    option.textContent = topic.title;
+    topicSelect.appendChild(option);
 });
 
 // Resets the section back to its initial state
 function resetSection() {
- assistantText.textContent = "The explanation will appear here once you select a topic.";
-topicSelect.value = ""; // Reset the dropdown to the "Select a topic" option
- currentTopicIndex = -1;
+    assistantText.textContent = "The explanation will appear here once you select a topic.";
+    topicSelect.value = ""; // Reset the dropdown to the "Select a topic" option
+    currentTopicIndex = -1;
 }
 
 // Update assistant panel
 function updateAssistant(index) {
- if (index < 0 || index >= topics.length) return;
- currentTopicIndex = index;
- const topic = topics[index];
- assistantText.innerHTML = topic.description.replace(/\n/g, "<br>");
- topicSelect.value = index;
-speakText(topic.description);
+    if (index < 0 || index >= topics.length) return;
+    currentTopicIndex = index;
+    const topic = topics[index];
+    assistantText.innerHTML = topic.description.replace(/\n/g, "<br>");
+    topicSelect.value = index;
+    speakText(topic.description);
 }
 
 // Dropdown selection
 topicSelect.addEventListener('change', () => {
- const index = parseInt(topicSelect.value);
-updateAssistant(index);
+    const index = parseInt(topicSelect.value);
+    updateAssistant(index);
 });
 
 // Next / Previous buttons
 nextBtn.addEventListener('click', () => {
- let nextIndex = currentTopicIndex + 1;
- if (nextIndex >= topics.length) nextIndex = 0;
- updateAssistant(nextIndex);
+    let nextIndex = currentTopicIndex + 1;
+    if (nextIndex >= topics.length) nextIndex = 0;
+    updateAssistant(nextIndex);
 });
 
 prevBtn.addEventListener('click', () => {
- let prevIndex = currentTopicIndex - 1;
- if (prevIndex < 0) prevIndex = topics.length - 1;
- updateAssistant(prevIndex);
+    let prevIndex = currentTopicIndex - 1;
+    if (prevIndex < 0) prevIndex = topics.length - 1;
+    updateAssistant(prevIndex);
 });
 
 // ====================== AI Voice Function (Updated) ======================
@@ -549,49 +552,52 @@ let femaleVoice = null;
 
 // Find and set a female voice once voices are loaded
 function setFemaleVoice() {
- const voices = speechSynthesis.getVoices();
- for (let i = 0; i < voices.length; i++) {
- // Look for a common female-sounding voice for US English
- if (voices[i].lang === 'en-US' && (voices[i].name.includes('Zira') || voices[i].name.includes('Samantha') || voices[i].name.includes('Google US English'))) {
-femaleVoice = voices[i];
- break;
- }
- }
- if (!femaleVoice) {
- // Fallback to the first available US English voice
- femaleVoice = voices.find(voice => voice.lang === 'en-US');
- }
+    const voices = speechSynthesis.getVoices();
+    for (let i = 0; i < voices.length; i++) {
+        // Look for a common female-sounding voice for US English
+        if (voices[i].lang === 'en-US' && (voices[i].name.includes('Zira') || voices[i].name.includes('Samantha') || voices[i].name.includes('Google US English'))) {
+            femaleVoice = voices[i];
+            break;
+        }
+    }
+    if (!femaleVoice) {
+        // Fallback to the first available US English voice
+        femaleVoice = voices.find(voice => voice.lang === 'en-US');
+    }
 }
 
 // Event listener to set the voice as soon as voices are available
 if ('speechSynthesis' in window) {
- speechSynthesis.onvoiceschanged = setFemaleVoice;
- setFemaleVoice(); // Try to set it immediately in case voices are already loaded
+    speechSynthesis.onvoiceschanged = setFemaleVoice;
+    setFemaleVoice(); // Try to set it immediately in case voices are already loaded
 }
 
 function speakText(text) {
- if ('speechSynthesis' in window) {
- const utterance = new SpeechSynthesisUtterance(text.replace(/\n/g, ". "));
- utterance.lang = 'en-US';
- utterance.rate = 0.95;
- utterance.pitch = 1.1;
- 
- // Use the female voice if it has been found
-if (femaleVoice) {
- utterance.voice = femaleVoice;
- }
+    if ('speechSynthesis' in window) {
+        // Remove markdown syntax like '#', '*', and '<br>' to ensure clean narration
+        const cleanText = text.replace(/#|`|\*|<br>/g, '').replace(/\n/g, ". ");
 
- // Add the onend event listener to reset the section
- utterance.onend = () => {
-console.log("Speech finished. Resetting section in 5 seconds...");
- setTimeout(resetSection, 5000); // 5000 milliseconds = 5 seconds
- };
+        const utterance = new SpeechSynthesisUtterance(cleanText);
+        utterance.lang = 'en-US';
+        utterance.rate = 0.95;
+        utterance.pitch = 1.1;
 
- speechSynthesis.cancel();
- speechSynthesis.speak(utterance);
- } else {
-console.warn("Text-to-speech not supported in this browser.");
- }
+        // Use the female voice if it has been found
+        if (femaleVoice) {
+            utterance.voice = femaleVoice;
+        }
+
+        // Add the onend event listener to reset the section
+        utterance.onend = () => {
+            console.log("Speech finished. Resetting section in 5 seconds...");
+            setTimeout(resetSection, 5000); // 5000 milliseconds = 5 seconds
+        };
+
+        speechSynthesis.cancel();
+        speechSynthesis.speak(utterance);
+    } else {
+        console.warn("Text-to-speech not supported in this browser.");
+    }
 }
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('projectInquiryForm');
