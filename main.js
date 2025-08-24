@@ -466,16 +466,17 @@ Accessibility Standards: Accessibility is no longer a best practice—it's a leg
 User Testing: The most reliable way to validate a design is through user testing. By observing real users as they interact with a product, designers can gather valuable qualitative and quantitative data. This iterative process of testing, feedback, and refinement is crucial for identifying pain points, validating assumptions, and continuously improving the user experience.
 `
     },
-    {
-        title: "About Manmeet Kaur",
-        id: "Manmeet Kaur",
-        description: `
-        Great! Here's About Manmeet Kaur
- Kickstart Your NET Success with Manmeet Kaur!
-Ready to conquer the UGC NET in Computer Science? 
-Join Manmeet Kaur, a celebrated educator with 8+ years of teaching at top universities, for an electrifying learning journey! Experience a high-performance curriculum crafted for speed, clarity, and maximum results. Unlock insider strategies that have helped countless students achieve top scores. Don’t just prepare—excel, confidently and effectively! 
-`
-    },
+{
+    title: "About Manmeet Kaur",
+    id: "Manmeet Kaur",
+    description: `
+    Great! Here's About Manmeet Kaur
+Kickstart Your NET Success with Manmeet Kaur!  
+
+Ready to conquer the UGC NET in Computer Science? Join <strong>Manmeet Kaur</strong>, a celebrated educator with 8+ years of teaching experience at top universities, for an electrifying learning journey! Experience a high-performance curriculum designed for speed, clarity, and maximum results. Unlock insider strategies that have helped countless students achieve top scores. Don’t just prepare—excel confidently and effectively!  
+
+📺 <a href="https://youtube.com/@unlocknetwithmanmeetkaur?si=LbjpaqvAftIRVXVs" target="_blank" rel="noopener noreferrer">Subscribe to Manmeet Kaur's YouTube channel</a> to discover the secrets behind her students' success and start your NET breakthrough today!`
+},
     {
         title: "About DigitalFusion",
         id: "digitalfusion",
