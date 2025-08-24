@@ -445,9 +445,21 @@ Asynchronous Programming: Modern web applications frequently need to fetch data 
     description: `
     Great! Here's About Manmeet Kaur.
 
-Ready to conquer the UGC NET in Computer Science? Join <strong>Manmeet Kaur</strong>, a celebrated educator with 8+ years of teaching experience at top universities, for an electrifying learning journey! Experience a high-performance curriculum designed for speed, clarity, and maximum results. Unlock insider strategies that have helped countless students achieve top scores. Don’t just prepare—excel confidently and effectively!  
+Ready to conquer the UGC NET in Computer Science? Step into a transformative learning experience powered by Digital Fusion’s strategic collaboration with Unlock NET with Manmeet Kaur, guided by the expert mentorship of Manmeet Kaur—a celebrated educator with over 8 years of teaching excellence across top universities.
+Why Enroll in This Program?
+- Strategic Curriculum Design
+Benefit from a meticulously structured syllabus tailored to the UGC NET Computer Science framework—optimized for conceptual clarity, accelerated learning, and measurable outcomes.
+- Proven Mentorship Excellence
+Learn under the expert guidance of Manmeet Kaur, whose 8+ years of teaching experience across premier institutions has empowered aspirants to consistently achieve top-tier results.
+- Collaborative Academic Ecosystem
+Experience the synergy of Digital Fusion’s collaboration with Unlock NET with Manmeet Kaur, delivering a high-impact learning environment that blends technical precision with aspirant-centric support.
+- Performance-Driven Methodology
+Access insider strategies, curated resources, and targeted practice modules designed to elevate your confidence, accuracy, and exam readiness.
+- Aspirant Empowerment Focus
+Join a community committed to your success—where mentorship, innovation, and strategic preparation converge to help you not just qualify, but excel.
 
-📺 <a href="https://youtube.com/@unlocknetwithmanmeetkaur?si=LbjpaqvAftIRVXVs" target="_blank" rel="noopener noreferrer">Subscribe to Manmeet Kaur's YouTube channel</a> to discover the secrets behind her students' success and start your NET breakthrough today!`
+
+<a href="https://youtube.com/@unlocknetwithmanmeetkaur?si=LbjpaqvAftIRVXVs" target="_blank" rel="noopener noreferrer">Subscribe to Manmeet Kaur's YouTube channel</a> to discover the secrets behind her students' success and start your NET breakthrough today!`
 },
     {
         title: "About DigitalFusion",
