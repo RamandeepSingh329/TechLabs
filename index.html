@@ -132,53 +132,32 @@ Driven by a team of passionate frontend developers, UI/UX designers, and web tec
         <textarea id="projectRequirements" name="projectRequirements" rows="6" required placeholder="Describe your requirements in detail..."></textarea>
       </div>
 
-      <div class="form-group">
-        <label for="sdlcModel">Preferred SDLC Model:</label>
-        <select id="sdlcModel" name="sdlcModel" required>
-          <option value="" disabled selected>Select SDLC Model</option>
-          <option value="Waterfall">Waterfall</option>
-          <option value="Agile">Agile</option>
-          <option value="Scrum">Scrum</option>
-          <option value="Iterative">Iterative</option>
-        </select>
-      </div>
-
       <button type="submit" class="btn primary-btn">Submit & Email</button>
     </form>
   </div>
 </section>
+<section id="e-learning" class="section e-learning-section">
+    <div class="container">
+        <h2>Frontend E-Learning Hub</h2>
+        <p>Select a topic below or navigate using buttons. Let your AI Assistant guide you through each topic.</p>
 
-        <section id="resources" class="section resources-section">
-            <div class="container">
-                <h2>Frontend Learning Resources</h2>
-                <div class="resource-list">
-                    <div class="resource-item">
-                        <h3>Modern JavaScript Frameworks Guide</h3>
-                        <p class="scrollable-text">JavaScript frameworks are an essential part of modern front-end web development, providing developers with tried and tested tools for building scalable, interactive web applications. Many modern companies use frameworks as a standard part of their tooling, so many front-end development jobs now require framework experience. In this set of articles, we are aiming to give you a comfortable starting point to help you begin learning frameworks.
-</p>
-                        <a href="https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Frameworks_libraries" class="btn btn-sm">Learn More</a>
-                    </div>
-                    <div class="resource-item">
-                        <h3>CSS Grid & Flexbox Masterclass</h3>
-                        <p class="scrollable-text">Flexbox helps in creating one-dimensional layouts through space distribution and alignment capabilities. Flexbox makes it easier to design responsive layouts without using float or positioning. It has made life much easier for people that use CSS.<br>
-                        Grid is a two-dimensional layout model that helps in creating a layout and aligning items in it. It offers a layout system with rows and columns, making it easier to design web pages without using floats and positioning.<br>
-                    Creating layouts with CSS can be tricky, and it's complicated by the fact that both Flexbox and Grid are used for designing the page layouts. This guide includes some differences between flexbox and grid. We'll see how to decide which one of these to use while designing a layout.</p>
-                        <a href="https://refine.dev/blog/css-grid-vs-flexbox/#introduction" class="btn btn-sm">Learn More</a>
-                    </div>
-                     <div class="resource-item">
-                        <h3>HTML5 -<br>
-                        A Complete Intoduction</h3>
-                        <p class="scrollable-text">HTML5 is the fifth version of Hypertext Markup Language (HTML), a standard language used to structure webpages. It defines how content on a webpage should be structured and displayed. Here are some key points of HTML5.<br>
-                       - Multimedia Support: Embeds audio and video without plugins.<br>
-                       - New Form Controls: Includes input types like date and email.<br>
-                       - Web Storage: Stores data offline for better performance.<br>
-                       - Improved Performance: Faster and more efficient, especially on mobile.</p>
-                        <a href="https://www.geeksforgeeks.org/html/html5-introduction/" class="btn btn-sm">Learn More</a>
-                    </div>
-                </div>
+        <div class="learning-controls">
+            <label for="topicSelect">Choose a topic:</label>
+            <select id="topicSelect">
+                <option value="" disabled selected>Select a topic</option>
+            </select>
+            <div class="nav-buttons">
+                <button id="prevTopic" class="btn secondary-btn">Previous</button>
+                <button id="nextTopic" class="btn secondary-btn">Next</button>
             </div>
-        </section>
+        </div>
 
+        <div id="assistant-panel" class="assistant-panel">
+            <h3>E-Learning Assistant</h3>
+            <p id="assistant-text">The explanation will appear here once you select a topic.</p>
+        </div>
+    </div>
+</section>
         <!-- Placeholder for the dynamically generated Contact Form Section -->
         <div id="contact-section-placeholder"></div>
 

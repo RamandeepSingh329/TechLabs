@@ -323,202 +323,311 @@ document.addEventListener('DOMContentLoaded', () => {
 
     
 });
-document.addEventListener('DOMContentLoaded', () => {
-    console.log('Script: DOMContentLoaded event fired. Starting initialization.');
+/* eslint-disable no-undef */
 
-    const quotes = [
-        "True innovation isn't measured by action alone—it flourishes where vision meets interaction, where every pixel becomes a bridge between imagination and experience.",
-        "The best way to predict the future is to create it. Let's code your vision into reality.",
-        "Great things are done by a series of small things brought together. Your project is our next great thing.",
-        "Collaboration is the key to unlocking new possibilities. Together, we can build anything.",
-        "In every line of code, there's an opportunity to create something truly impactful."
-    ];
+document.addEventListener('DOMContentLoaded', function() {
+    // ====================== Elements ======================
+    const quoteElement = document.getElementById('quote-text');
+    const buttonContainer = document.getElementById('button-container');
 
-    const buttonTexts = [
-        "Discover What's Possible",
-        "Partner for Innovation",
-        "Realize Your Project's Potential",
-        "Ignite Your Digital Success",
-        "Build Beyond Expectations",
-        "Elevate Your Brand Online",
-        "Craft Your Strategic Advantage",
-        "Transform Concepts into Reality",
-        "Unleash Your Project's Future",
-        "Initiate Your Next Big Idea"
-    ];
-
-    const quoteElement = document.getElementById('collaborationQuote');
-    const buttonContainer = document.getElementById('buttonContainer');
-
-    // --- Critical Check: Ensure elements are found ---
-    if (!quoteElement) {
-        console.error('Script Error: Quote element with ID "collaborationQuote" not found in the DOM.');
-        return;
-    }
-    if (!buttonContainer) {
-        console.error('Script Error: Button container with ID "buttonContainer" not found in the DOM.');
-        return;
-    }
-    console.log('Script: Quote and Button container elements found successfully.');
-
-    // --- Create the button element dynamically ---
+    // Create button dynamically
     const buttonElement = document.createElement('a');
     buttonElement.href = "mailto:codersingh94@gmail.com?subject=Initiating a Custom Web Project&body=Dear Ramandeep Singh,%0A%0AI hope you're doing well.%0A%0AI’m reaching out to explore the possibility of developing a customized web project geared towards my specific needs. I'm looking for a digital solution that reflects my goals, engages effectively with users, and offers a seamless experience across all platforms.%0A%0AIf you're available to discuss this further, I’d love to connect and explore how we can collaborate to bring this project to life with a focus on quality, functionality, and thoughtful design.%0A%0ALooking forward to hearing from you.%0A%0ABest regards,%0A[Your Name]";
     buttonElement.className = "btn primary-btn";
     buttonContainer.appendChild(buttonElement);
-    console.log('Script: Button element created and appended to DOM.');
 
+    // ====================== Quotes & Button Texts ======================
+    const quotes = [
+        "Crafting digital journeys, not just interfaces.",
+        "Your vision, our code. The perfect digital blend.",
+        "Where design meets functionality in every pixel.",
+        "The future of frontend is here. We're building it."
+    ];
+
+    const buttonTexts = [
+        "Start Your Project",
+        "Get a Free Quote",
+        "Let's Collaborate",
+        "Contact Us Now"
+    ];
+
+    // ====================== Animation Settings ======================
     let currentQuoteIndex = 0;
 
     const style = getComputedStyle(document.documentElement);
-    const fadeDuration = parseFloat(style.getPropertyValue('--fade-duration')) * 1000 || 0;
-    console.log(`Script: Retrieved --fade-duration from CSS: ${fadeDuration / 1000}s`);
+    const fadeDuration = parseFloat(style.getPropertyValue('--fade-duration')) * 1000 || 500; // default 0.5s
 
-    // --- Optimized: Single interval for both initial and subsequent changes ---
-    const displayInterval = 5000; // 5 seconds total for each cycle (display + fade)
+    const displayInterval = 5000; // 5 seconds per cycle
 
-    // Function to update content and trigger fade-in
+    // ====================== Functions ======================
     function updateQuoteAndButtonContent() {
-        console.log(`Script: Updating content. Current index: ${currentQuoteIndex}`);
-
-        // Increment index, loop back to 0 if at end of array
-        // Make sure to handle the case where buttonTexts and quotes have different lengths
         currentQuoteIndex = (currentQuoteIndex + 1) % Math.max(quotes.length, buttonTexts.length);
 
-        // Apply new text content, ensuring we don't go out of bounds if arrays are different lengths
         quoteElement.textContent = quotes[currentQuoteIndex % quotes.length];
         buttonElement.textContent = buttonTexts[currentQuoteIndex % buttonTexts.length];
 
-        // Remove fade-out-text class to fade in the button text
-        buttonElement.classList.remove('fade-out-text');
-
-        // Ensure visibility and apply pseudo-element classes for quote marks
         quoteElement.style.opacity = '1';
-        quoteElement.classList.add('show-opening-mark');
-        quoteElement.classList.add('show-closing-mark');
-        console.log(`Script: Content updated to index ${currentQuoteIndex}. Opacity set to 1.`);
+        quoteElement.classList.add('show-opening-mark', 'show-closing-mark');
+        buttonElement.classList.remove('fade-out-text');
     }
 
-    // Function to initiate fade-out and then content change
     function initiateContentChange() {
-        console.log('Script: Initiating content change (fade-out).');
-        // Start fade-out effect for the quote text
+        // Fade out
         quoteElement.style.opacity = '0';
-        quoteElement.classList.remove('show-opening-mark');
-        quoteElement.classList.remove('show-closing-mark');
+        quoteElement.classList.remove('show-opening-mark', 'show-closing-mark');
 
-        // Add fade-out-text class to fade out the button text
         buttonElement.classList.add('fade-out-text');
 
-        // After the fade-out duration, update the content and fade it back in
+        // After fade duration, update content
         setTimeout(updateQuoteAndButtonContent, fadeDuration);
-        console.log(`Script: Fade-out initiated. Next content update in ${fadeDuration}ms.`);
     }
 
-    // --- Initial setup on page load ---
-    currentQuoteIndex = 0; // Ensure it starts at the first element
+    // ====================== Initial Setup ======================
     quoteElement.textContent = quotes[currentQuoteIndex];
-    buttonElement.textContent = buttonTexts[currentQuoteIndex]; // Set initial text for the button
+    buttonElement.textContent = buttonTexts[currentQuoteIndex];
 
-    // Ensure initial visibility for both
     quoteElement.style.opacity = '1';
-    quoteElement.classList.add('show-opening-mark');
-    quoteElement.classList.add('show-closing-mark');
-    buttonElement.classList.remove('fade-out-text'); // Ensures it starts visible
+    quoteElement.classList.add('show-opening-mark', 'show-closing-mark');
+    buttonElement.classList.remove('fade-out-text');
 
-    console.log(`Script: Initial content set to index ${currentQuoteIndex}.`);
-
-    // --- Schedule continuous changes every 'displayInterval' + 'fadeDuration' ---
-    // The first change will occur after this total duration.
-    // If you want the *first* display to be 5 seconds, then the subsequent calls
-    // should happen after the (displayInterval - fadeDuration)
-    // To keep it simple and consistent: The cycle length (display + fade) is 5 seconds.
-    setInterval(initiateContentChange, displayInterval); // Cycle every 5 seconds including fade
-
-    console.log('Script: Initialization complete.');
+    // ====================== Start Interval ======================
+    setInterval(initiateContentChange, displayInterval);
 });
-// ================= Frontend SDLC Descriptions =================
-const sdlcDescriptions = {
-    Waterfall: "Waterfall in frontend development follows a linear approach: requirements gathering, UI,UX design, static layout implementation (HTML,CSS), interactivity with JavaScript, testing, and deployment. It's ideal for projects with fixed designs and minimal changes.",
-    
-    Agile: "Agile frontend development emphasizes iterative design and rapid prototyping. UI components, layouts, and interactions are developed incrementally, allowing continuous feedback, responsive adjustments, and faster delivery of functional interfaces.",
-    
-    Scrum: "Scrum applies Agile principles for frontend teams, breaking development into sprints. Each sprint delivers usable UI components, interactive features, and tested pages. Regular reviews ensure that design, responsiveness, and user experience meet client expectations.",
-    
-    Iterative: "Iterative frontend development focuses on repeated cycles: design, implement, test, and refine. Each iteration improves layouts, enhances interactions, and optimizes performance, allowing gradual evolution of the web interface until it meets high-quality standards."
-};
-// ================= References to form elements =================
-const form = document.getElementById("projectInquiryForm");
-const sdlcSelect = document.getElementById("sdlcModel");
+// ====================== Topics with Deep Explanations ======================
+const topics = [
+ {
+ title: "HTML5 Basics",
+ id: "html",
+ description: `
+ HTML5: The Structural Core of Modern Web Applications
 
-// ================= SDLC Description Display =================
-const sdlcDisplay = document.createElement("p");
-sdlcDisplay.style.fontStyle = "italic";
-sdlcDisplay.style.color = "#1a237e";
-sdlcDisplay.style.marginTop = "5px";
-sdlcSelect.parentNode.appendChild(sdlcDisplay);
+HTML5 serves as the foundational language for structuring content on the web. It's the standard that defines the semantic meaning and organization of every page, providing the essential framework upon which all other technologies are built.
 
-// Event listener to display description and read aloud when SDLC model changes
-sdlcSelect.addEventListener("change", () => {
-    const selectedModel = sdlcSelect.value;
-    const description = sdlcDescriptions[selectedModel] || "No description available for this SDLC model.";
-    
-    // Display description on form
-    sdlcDisplay.textContent = description;
+Semantic Tags: These tags move beyond simple presentation, conveying explicit meaning about a page's structure to both browsers and assistive technologies. For example, using an <article> for a blog post helps search engine crawlers understand the page's primary content. Similarly, screen readers can leverage tags like <nav> to efficiently guide users to the main navigation menu, significantly enhancing accessibility.
+Advanced Forms and Inputs: HTML5 introduced a new generation of input types designed to streamline user data entry. Inputs like <input type="email"> and <input type="date"> provide built-in client-side validation, reducing the need for custom JavaScript and improving data integrity. On mobile devices, these inputs automatically trigger specialized keyboards (e.g., a numeric keypad for <input type="tel">), providing a more intuitive user experience.
+Native Multimedia Support: A key advancement of HTML5 was the native inclusion of multimedia capabilities. The <audio> and <video> tags allow for direct embedding of media without relying on third-party plugins like Flash. This not only improves security and performance but also ensures a consistent user experience across different browsers and devices. The <source> tag enables developers to provide multiple file formats (e.g., MP4, WebM) to guarantee playback on all modern browsers.
+Web Storage APIs: The localStorage and sessionStorage APIs provide a robust mechanism for client-side data persistence. This capability is fundamental for building modern web applications that are responsive and can function offline. A common real-world use case is using localStorage to save a user's theme preference or the contents of a shopping cart, ensuring the data persists even after the browser is closed.
+`
+ },
+ {
+ title: "CSS & Styling",
+ id: "css",
+ description: `
+ CSS: The Language of Visual Presentation
 
-    // Use AI voice to read the description
-    if ('speechSynthesis' in window) {
-        const utterance = new SpeechSynthesisUtterance(`${selectedModel} Model: ${description}`);
-        utterance.rate = 1;
-        utterance.pitch = 1;
-        window.speechSynthesis.speak(utterance);
-    }
+CSS, or Cascading Style Sheets, is the declarative language used to define the visual styling and layout of a web page. It transforms structured HTML content into a cohesive, aesthetically pleasing, and responsive user interface.
+
+Advanced Layout Modules: Modern CSS provides powerful layout tools that have revolutionized web design. Flexbox is a one-dimensional layout system ideal for distributing space and aligning items in a single row or column, such as a navigation bar or a photo gallery. CSS Grid is a two-dimensional system, perfect for creating complex, responsive grid layouts like a professional dashboard or a magazine-style homepage, where precise control over rows and columns is required.
+Dynamic Styling and Theming: Beyond basic colors and fonts, CSS offers advanced features for creating dynamic and maintainable designs. Custom properties (CSS Variables) allow developers to define reusable values (e.g., --primary-color: #007bff;) that can be easily updated to manage a site-wide theme from a single location. This approach ensures design consistency and simplifies future updates.
+Media Queries and Responsive Design: Media queries are the cornerstone of responsive web design. They allow developers to apply different styles based on the characteristics of a device, such as its screen width, height, or orientation. A real-time example is a website that displays a horizontal navigation menu on a desktop screen but transforms it into a collapsible "hamburger" menu on a smaller mobile device, optimizing the user experience for each viewport.
+Animations and Transitions: CSS provides powerful tools for enhancing user interaction through motion. Transitions enable smooth state changes, such as a button gracefully changing color on hover, providing subtle visual feedback. Animations, on the other hand, allow for complex, keyframed sequences, ideal for creating engaging effects like a looping loading spinner or a hero image that fades in dynamically.
+`
+ },
+ {
+ title: "JavaScript Essentials",
+ id: "javascript",
+ description: `
+ JavaScript: The Engine of Interactivity
+
+JavaScript is a versatile, high-level programming language that makes web pages dynamic and interactive. It enables complex behaviors, from real-time data updates to seamless user interactions, effectively serving as the application logic layer.
+
+Core Concepts: A solid understanding of core concepts is essential. Closures, for instance, are a powerful feature that allows a function to remember the variables from its outer scope even after the outer function has finished executing. This is a fundamental pattern for creating modular and encapsulated components, preventing data pollution in the global scope.
+DOM Manipulation: The Document Object Model (DOM) is a programming interface for web documents. JavaScript can access and manipulate the DOM to dynamically update a page's content without a full page reload. A practical example is a "like" button on a social media post: when clicked, JavaScript intercepts the event, sends data to a server, and instantly updates the like count on the page, providing immediate feedback to the user.
+Event Handling: Event listeners are a core part of creating an interactive user experience. They non-invasively wait for a user action—be it a click, a keyboard press, or a mouse hover—and then execute a specific function in response. This allows for a clean separation of concerns, where the logic for a user interaction is handled independently of the HTML structure.
+Asynchronous Programming: Modern web applications frequently need to fetch data from external APIs without freezing the user interface. Asynchronous programming is the solution to this challenge. Promises and the async/await syntax provide a clean, readable way to handle these non-blocking operations. A real-world scenario involves fetching a user's profile information from a server; async/await allows the code to "wait" for the data to return before processing it, while the rest of the application remains responsive to the user.
+`
+},
+ {
+title: "Modern JS Frameworks",
+ id: "frameworks",
+ description: `
+ Modern JavaScript Frameworks: Building Scalable Applications
+
+For large-scale projects and Single-Page Applications (SPAs), managing complex state and a growing number of components can be a challenge. Modern JavaScript frameworks provide a structured, efficient, and scalable approach to development.
+
+React: React is a component-based library that excels at building complex user interfaces. Its core strength lies in a declarative paradigm and the use of a Virtual DOM. By creating a lightweight copy of the actual DOM, React can determine the most efficient way to update the user interface, minimizing expensive reflows and repaints and leading to superior performance.
+Vue: Vue is praised for its incremental adoptability, making it a flexible choice for projects of all sizes. Its reactive data bindings are a standout feature, automatically updating the view whenever the underlying data changes. This simplifies state management and reduces the amount of boilerplate code required to create dynamic UIs.
+Angular: Angular is a comprehensive, opinionated framework built with TypeScript, which adds static typing for improved code quality and maintainability. Its architecture is well-suited for enterprise-level applications, providing a full suite of built-in features for everything from routing and state management to dependency injection.
+State Management Solutions: As applications grow, sharing data across disparate components becomes a significant challenge. Libraries like Redux or framework-specific solutions like Vuex and React's Context API address this by providing a centralized "store" for shared application data. This eliminates the need for "prop drilling"—passing data through many layers of components—and ensures a consistent and predictable application state.
+`
+ },
+ {
+ title: "UI/UX Design",
+ id: "uiux",
+ description: `
+ UI/UX Design: Crafting the User Experience
+
+UI and UX are two complementary disciplines that are critical to the success of any digital product. UI (User Interface) design focuses on the visual and interactive elements, while UX (User Experience) design encompasses the entire user journey, ensuring a product is intuitive, efficient, and enjoyable to use.
+
+Wireframing and Prototyping: These are essential steps in the design thinking process. Wireframes are low-fidelity blueprints that focus on a page's information architecture and layout, while prototypes are interactive models that simulate the user flow. Both are invaluable for testing concepts and gathering early feedback to validate design decisions before development begins.
+Accessibility Standards: Accessibility is no longer a best practice—it's a legal and ethical imperative. Adhering to standards like the Web Content Accessibility Guidelines (WCAG) ensures that a site is usable by people with disabilities. This includes practices like providing meaningful alt text for images and ensuring full keyboard navigation, allowing all users to interact with your content.
+User Testing: The most reliable way to validate a design is through user testing. By observing real users as they interact with a product, designers can gather valuable qualitative and quantitative data. This iterative process of testing, feedback, and refinement is crucial for identifying pain points, validating assumptions, and continuously improving the user experience.
+`
+ },
+ {
+ title: "About Manmeet Kaur",
+ id: "Manmeet Kaur",
+description: `
+ Kickstart Your NET Success with Manmeet Kaur!
+Ready to conquer the UGC NET in Computer Science? 
+Join Manmeet Kaur, a celebrated educator with 8+ years of teaching at top universities, for an electrifying learning journey! Experience a high-performance curriculum crafted for speed, clarity, and maximum results. Unlock insider strategies that have helped countless students achieve top scores. Don’t just prepare—excel, confidently and effectively! 
+`
+ },
+ {
+ title: "About DigitalFusion",
+ id: "digitalfusion",
+ description: `
+ DigitalFusion: Pioneering Frontend Innovation
+
+DigitalFusion is a Frontend Innovation Hub committed to delivering exceptional digital experiences. We believe in the power of frontend technology to transform business ideas into immersive and high-performance applications. Our mission is to empower organizations by building responsive, intuitive, and visually stunning user interfaces that not only meet but exceed end-user expectations.
+`
+ },
+ {
+ title: "About Ramandeep Singh",
+ id: "ramandeep",
+ description: `
+ About Ramandeep Singh: A Visionary in Frontend
+
+Ramandeep Singh is the visionary founder of DigitalFusion, bringing over eight years of experience and a deep passion for frontend development and UI/UX. His philosophy is rooted in a commitment to crafting digital journeys, not just interfaces. Ramandeep believes that the true power of technology lies in its ability to blend technical excellence with creative design to solve real-world problems. His leadership and commitment to continuous learning drive DigitalFusion's mission to become a global benchmark for innovation in the frontend space.
+`
+ }
+];
+
+const topicSelect = document.getElementById('topicSelect');
+const assistantText = document.getElementById('assistant-text');
+const prevBtn = document.getElementById('prevTopic');
+const nextBtn = document.getElementById('nextTopic');
+
+let currentTopicIndex = -1;
+
+// Populate dropdown
+topics.forEach((topic, index) => {
+ const option = document.createElement('option');
+ option.value = index;
+ option.textContent = topic.title;
+topicSelect.appendChild(option);
 });
 
-// ================= Form Submission =================
-form.addEventListener("submit", function(e) {
-    e.preventDefault();
+// Resets the section back to its initial state
+function resetSection() {
+ assistantText.textContent = "The explanation will appear here once you select a topic.";
+topicSelect.value = ""; // Reset the dropdown to the "Select a topic" option
+ currentTopicIndex = -1;
+}
 
-    // Get form values
-    const clientName = document.getElementById("clientName").value.trim();
-    const clientEmail = document.getElementById("clientEmail").value.trim();
-    const projectType = document.getElementById("projectType").value;
-    const projectRequirements = document.getElementById("projectRequirements").value.trim();
-    const sdlcModel = document.getElementById("sdlcModel").value;
+// Update assistant panel
+function updateAssistant(index) {
+ if (index < 0 || index >= topics.length) return;
+ currentTopicIndex = index;
+ const topic = topics[index];
+ assistantText.innerHTML = topic.description.replace(/\n/g, "<br>");
+ topicSelect.value = index;
+speakText(topic.description);
+}
 
-    // Validate mandatory fields
-    if (!clientName || !clientEmail || !projectType || !projectRequirements || !sdlcModel) {
-        alert("Please fill in all fields before submitting the form.");
-        return;
-    }
+// Dropdown selection
+topicSelect.addEventListener('change', () => {
+ const index = parseInt(topicSelect.value);
+updateAssistant(index);
+});
 
-    // SDLC description
-    const sdlcDescription = sdlcDescriptions[sdlcModel] || "No description available for selected SDLC model.";
+// Next / Previous buttons
+nextBtn.addEventListener('click', () => {
+ let nextIndex = currentTopicIndex + 1;
+ if (nextIndex >= topics.length) nextIndex = 0;
+ updateAssistant(nextIndex);
+});
 
-    // Prepare email content
-    const emailSubject = encodeURIComponent(`Project Inquiry from ${clientName}`);
-    const emailBody = encodeURIComponent(
-`Dear DigitalFusion Team,
+prevBtn.addEventListener('click', () => {
+ let prevIndex = currentTopicIndex - 1;
+ if (prevIndex < 0) prevIndex = topics.length - 1;
+ updateAssistant(prevIndex);
+});
 
-Please find my project inquiry details below:
+// ====================== AI Voice Function (Updated) ======================
+let femaleVoice = null;
+
+// Find and set a female voice once voices are loaded
+function setFemaleVoice() {
+ const voices = speechSynthesis.getVoices();
+ for (let i = 0; i < voices.length; i++) {
+ // Look for a common female-sounding voice for US English
+ if (voices[i].lang === 'en-US' && (voices[i].name.includes('Zira') || voices[i].name.includes('Samantha') || voices[i].name.includes('Google US English'))) {
+femaleVoice = voices[i];
+ break;
+ }
+ }
+ if (!femaleVoice) {
+ // Fallback to the first available US English voice
+ femaleVoice = voices.find(voice => voice.lang === 'en-US');
+ }
+}
+
+// Event listener to set the voice as soon as voices are available
+if ('speechSynthesis' in window) {
+ speechSynthesis.onvoiceschanged = setFemaleVoice;
+ setFemaleVoice(); // Try to set it immediately in case voices are already loaded
+}
+
+function speakText(text) {
+ if ('speechSynthesis' in window) {
+ const utterance = new SpeechSynthesisUtterance(text.replace(/\n/g, ". "));
+ utterance.lang = 'en-US';
+ utterance.rate = 0.95;
+ utterance.pitch = 1.1;
+ 
+ // Use the female voice if it has been found
+if (femaleVoice) {
+ utterance.voice = femaleVoice;
+ }
+
+ // Add the onend event listener to reset the section
+ utterance.onend = () => {
+console.log("Speech finished. Resetting section in 5 seconds...");
+ setTimeout(resetSection, 5000); // 5000 milliseconds = 5 seconds
+ };
+
+ speechSynthesis.cancel();
+ speechSynthesis.speak(utterance);
+ } else {
+console.warn("Text-to-speech not supported in this browser.");
+ }
+}
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('projectInquiryForm');
+
+    form.addEventListener('submit', function(e) {
+        e.preventDefault(); // Prevent default form submission
+
+        // Collect input values
+        const clientName = document.getElementById('clientName').value.trim();
+        const clientEmail = document.getElementById('clientEmail').value.trim();
+        const projectType = document.getElementById('projectType').value;
+        const projectRequirements = document.getElementById('projectRequirements').value.trim();
+
+        // Professional email body
+        const emailBody = 
+`Dear Ramandeep Singh,
+
+I hope this message finds you well.
+
+I would like to initiate a custom web project with DigitalFusion. Here are my project details:
 
 Client Name: ${clientName}
-Email: ${clientEmail}
+Client Email: ${clientEmail}
 Project Type: ${projectType}
-Preferred SDLC Model: ${sdlcModel}
-
-SDLC Description:
-${sdlcDescription}
-
 Project Requirements:
 ${projectRequirements}
 
-Looking forward to your response.
+I look forward to discussing this project with you and exploring the possibilities for collaboration.
 
 Best regards,
-${clientName}`
-    );
+${clientName}`;
 
-    // Auto redirect to email
-    window.location.href = `mailto:Ramandeep22981@outlook.com?subject=${emailSubject}&body=${emailBody}`;
+        // Encode for mailto link
+        const mailtoLink = `mailto:codersingh94@gmail.com?subject=${encodeURIComponent("New Web Project Submission")}&body=${encodeURIComponent(emailBody)}`;
+
+        // Open default email client
+        window.location.href = mailtoLink;
+    });
 });
