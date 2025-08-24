@@ -401,7 +401,7 @@ const topics = [
         title: "HTML5 Basics",
         id: "html",
         description: `
- HTML5: The Structural Core of Modern Web Applications
+HTML5: The Structural Core of Modern Web Applications
 
 HTML5 serves as the foundational language for structuring content on the web. It's the standard that defines the semantic meaning and organization of every page, providing the essential framework upon which all other technologies are built.
 
@@ -415,7 +415,7 @@ Web Storage APIs: The localStorage and sessionStorage APIs provide a robust mech
         title: "CSS & Styling",
         id: "css",
         description: `
- CSS: The Language of Visual Presentation
+CSS: The Language of Visual Presentation
 
 CSS, or Cascading Style Sheets, is the declarative language used to define the visual styling and layout of a web page. It transforms structured HTML content into a cohesive, aesthetically pleasing, and responsive user interface.
 
@@ -429,7 +429,7 @@ Animations and Transitions: CSS provides powerful tools for enhancing user inter
         title: "JavaScript Essentials",
         id: "javascript",
         description: `
- JavaScript: The Engine of Interactivity
+JavaScript: The Engine of Interactivity
 
 JavaScript is a versatile, high-level programming language that makes web pages dynamic and interactive. It enables complex behaviors, from real-time data updates to seamless user interactions, effectively serving as the application logic layer.
 
@@ -440,38 +440,10 @@ Asynchronous Programming: Modern web applications frequently need to fetch data 
 `
     },
     {
-        title: "Modern JS Frameworks",
-        id: "frameworks",
-        description: `
- Modern JavaScript Frameworks: Building Scalable Applications
-
-For large-scale projects and Single-Page Applications (SPAs), managing complex state and a growing number of components can be a challenge. Modern JavaScript frameworks provide a structured, efficient, and scalable approach to development.
-
-React: React is a component-based library that excels at building complex user interfaces. Its core strength lies in a declarative paradigm and the use of a Virtual DOM. By creating a lightweight copy of the actual DOM, React can determine the most efficient way to update the user interface, minimizing expensive reflows and repaints and leading to superior performance.
-Vue: Vue is praised for its incremental adoptability, making it a flexible choice for projects of all sizes. Its reactive data bindings are a standout feature, automatically updating the view whenever the underlying data changes. This simplifies state management and reduces the amount of boilerplate code required to create dynamic UIs.
-Angular: Angular is a comprehensive, opinionated framework built with TypeScript, which adds static typing for improved code quality and maintainability. Its architecture is well-suited for enterprise-level applications, providing a full suite of built-in features for everything from routing and state management to dependency injection.
-State Management Solutions: As applications grow, sharing data across disparate components becomes a significant challenge. Libraries like Redux or framework-specific solutions like Vuex and React's Context API address this by providing a centralized "store" for shared application data. This eliminates the need for "prop drilling"—passing data through many layers of components—and ensures a consistent and predictable application state.
-`
-    },
-    {
-        title: "UI/UX Design",
-        id: "uiux",
-        description: `
- UI/UX Design: Crafting the User Experience
-
-UI and UX are two complementary disciplines that are critical to the success of any digital product. UI (User Interface) design focuses on the visual and interactive elements, while UX (User Experience) design encompasses the entire user journey, ensuring a product is intuitive, efficient, and enjoyable to use.
-
-Wireframing and Prototyping: These are essential steps in the design thinking process. Wireframes are low-fidelity blueprints that focus on a page's information architecture and layout, while prototypes are interactive models that simulate the user flow. Both are invaluable for testing concepts and gathering early feedback to validate design decisions before development begins.
-Accessibility Standards: Accessibility is no longer a best practice—it's a legal and ethical imperative. Adhering to standards like the Web Content Accessibility Guidelines (WCAG) ensures that a site is usable by people with disabilities. This includes practices like providing meaningful alt text for images and ensuring full keyboard navigation, allowing all users to interact with your content.
-User Testing: The most reliable way to validate a design is through user testing. By observing real users as they interact with a product, designers can gather valuable qualitative and quantitative data. This iterative process of testing, feedback, and refinement is crucial for identifying pain points, validating assumptions, and continuously improving the user experience.
-`
-    },
-{
     title: "About Manmeet Kaur",
     id: "Manmeet Kaur",
     description: `
     Great! Here's About Manmeet Kaur
-Kickstart Your NET Success with Manmeet Kaur!  
 
 Ready to conquer the UGC NET in Computer Science? Join <strong>Manmeet Kaur</strong>, a celebrated educator with 8+ years of teaching experience at top universities, for an electrifying learning journey! Experience a high-performance curriculum designed for speed, clarity, and maximum results. Unlock insider strategies that have helped countless students achieve top scores. Don’t just prepare—excel confidently and effectively!  
 
@@ -495,8 +467,10 @@ DigitalFusion is a Frontend Innovation Hub committed to delivering exceptional d
 Ramandeep Singh is the visionary founder of DigitalFusion, bringing over three years + of experience and a deep passion for frontend development and UI/UX. His philosophy is rooted in a commitment to crafting digital journeys, not just interfaces. Ramandeep believes that the true power of technology lies in its ability to blend technical excellence with creative design to solve real-world problems. His leadership and commitment to continuous learning drive DigitalFusion's mission to become a global benchmark for innovation in the frontend space.
 `
     }
+
 ];
 
+// ====================== DOM References ======================
 const topicSelect = document.getElementById('topicSelect');
 const assistantText = document.getElementById('assistant-text');
 const prevBtn = document.getElementById('prevTopic');
@@ -512,10 +486,10 @@ topics.forEach((topic, index) => {
     topicSelect.appendChild(option);
 });
 
-// Resets the section back to its initial state
+// Reset section
 function resetSection() {
     assistantText.textContent = "The explanation will appear here once you select a topic.";
-    topicSelect.value = ""; // Reset the dropdown to the "Select a topic" option
+    topicSelect.value = "";
     currentTopicIndex = -1;
 }
 
@@ -548,57 +522,51 @@ prevBtn.addEventListener('click', () => {
     updateAssistant(prevIndex);
 });
 
-// ====================== AI Voice Function (Updated) ======================
+// ====================== AI Voice Function ======================
 let femaleVoice = null;
 
-// Find and set a female voice once voices are loaded
 function setFemaleVoice() {
     const voices = speechSynthesis.getVoices();
-    for (let i = 0; i < voices.length; i++) {
-        // Look for a common female-sounding voice for US English
-        if (voices[i].lang === 'en-US' && (voices[i].name.includes('Zira') || voices[i].name.includes('Samantha') || voices[i].name.includes('Google US English'))) {
-            femaleVoice = voices[i];
-            break;
-        }
-    }
-    if (!femaleVoice) {
-        // Fallback to the first available US English voice
-        femaleVoice = voices.find(voice => voice.lang === 'en-US');
-    }
+    femaleVoice = voices.find(v => v.lang.includes('en') && (v.name.includes('Zira') || v.name.includes('Samantha') || v.name.includes('Google US English'))) 
+                 || voices.find(v => v.lang.includes('en'));
 }
 
-// Event listener to set the voice as soon as voices are available
+// Delay for Safari to ensure voices are loaded
+function loadVoicesSafely() {
+    setTimeout(() => {
+        if (speechSynthesis.getVoices().length === 0) {
+            // Retry if voices are not loaded yet
+            loadVoicesSafely();
+        } else {
+            setFemaleVoice();
+        }
+    }, 100);
+}
+
 if ('speechSynthesis' in window) {
     speechSynthesis.onvoiceschanged = setFemaleVoice;
-    setFemaleVoice(); // Try to set it immediately in case voices are already loaded
+    loadVoicesSafely();
 }
 
 function speakText(text) {
-    if ('speechSynthesis' in window) {
-        // Remove markdown syntax like '#', '*', and '<br>' to ensure clean narration
-        const cleanText = text.replace(/#|`|\*|<br>/g, '').replace(/\n/g, ". ");
+    if (!('speechSynthesis' in window)) return;
 
-        const utterance = new SpeechSynthesisUtterance(cleanText);
-        utterance.lang = 'en-US';
-        utterance.rate = 0.95;
-        utterance.pitch = 1.1;
+    // Clean text for speech
+    let cleanText = text.replace(/<[^>]*>/g, '')  // Remove HTML
+                        .replace(/[#*`]/g, '')    // Remove markdown symbols
+                        .replace(/\s+/g, ' ')    // Remove extra spaces
+                        .trim();
 
-        // Use the female voice if it has been found
-        if (femaleVoice) {
-            utterance.voice = femaleVoice;
-        }
+    if (!cleanText) return;
 
-        // Add the onend event listener to reset the section
-        utterance.onend = () => {
-            console.log("Speech finished. Resetting section in 5 seconds...");
-            setTimeout(resetSection, 5000); // 5000 milliseconds = 5 seconds
-        };
+    const utterance = new SpeechSynthesisUtterance(cleanText);
+    utterance.lang = 'en-US';
+    utterance.rate = 0.95;
+    utterance.pitch = 1.1;
+    if (femaleVoice) utterance.voice = femaleVoice;
 
-        speechSynthesis.cancel();
-        speechSynthesis.speak(utterance);
-    } else {
-        console.warn("Text-to-speech not supported in this browser.");
-    }
+    if (speechSynthesis.speaking) speechSynthesis.cancel();
+    speechSynthesis.speak(utterance);
 }
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('projectInquiryForm');
