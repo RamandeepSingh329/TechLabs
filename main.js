@@ -401,7 +401,7 @@ const topics = [
         title: "HTML5 Basics",
         id: "html",
         description: `
-HTML5: The Structural Core of Modern Web Applications
+HTML5: The Structural Core of Modern Web Applications.
 
 HTML5 serves as the foundational language for structuring content on the web. It's the standard that defines the semantic meaning and organization of every page, providing the essential framework upon which all other technologies are built.
 
@@ -415,7 +415,7 @@ Web Storage APIs: The localStorage and sessionStorage APIs provide a robust mech
         title: "CSS & Styling",
         id: "css",
         description: `
-CSS: The Language of Visual Presentation
+CSS: The Language of Visual Presentation.
 
 CSS, or Cascading Style Sheets, is the declarative language used to define the visual styling and layout of a web page. It transforms structured HTML content into a cohesive, aesthetically pleasing, and responsive user interface.
 
@@ -429,7 +429,7 @@ Animations and Transitions: CSS provides powerful tools for enhancing user inter
         title: "JavaScript Essentials",
         id: "javascript",
         description: `
-JavaScript: The Engine of Interactivity
+JavaScript: The Engine of Interactivity.
 
 JavaScript is a versatile, high-level programming language that makes web pages dynamic and interactive. It enables complex behaviors, from real-time data updates to seamless user interactions, effectively serving as the application logic layer.
 
@@ -443,7 +443,7 @@ Asynchronous Programming: Modern web applications frequently need to fetch data 
     title: "About Manmeet Kaur",
     id: "Manmeet Kaur",
     description: `
-    Great! Here's About Manmeet Kaur
+    Great! Here's About Manmeet Kaur.
 
 Ready to conquer the UGC NET in Computer Science? Join <strong>Manmeet Kaur</strong>, a celebrated educator with 8+ years of teaching experience at top universities, for an electrifying learning journey! Experience a high-performance curriculum designed for speed, clarity, and maximum results. Unlock insider strategies that have helped countless students achieve top scores. Don’t just prepare—excel confidently and effectively!  
 
@@ -453,7 +453,7 @@ Ready to conquer the UGC NET in Computer Science? Join <strong>Manmeet Kaur</str
         title: "About DigitalFusion",
         id: "digitalfusion",
         description: `
- DigitalFusion: Pioneering Frontend Innovation
+ DigitalFusion: Pioneering Frontend Innovation.
 
 DigitalFusion is a Frontend Innovation Hub committed to delivering exceptional digital experiences. We believe in the power of frontend technology to transform business ideas into immersive and high-performance applications. Our mission is to empower organizations by building responsive, intuitive, and visually stunning user interfaces that not only meet but exceed end-user expectations.
 `
@@ -462,7 +462,7 @@ DigitalFusion is a Frontend Innovation Hub committed to delivering exceptional d
         title: "About Ramandeep Singh",
         id: "ramandeep",
         description: `
- About Ramandeep Singh: A Visionary in Frontend
+ About Ramandeep Singh: A Visionary in Frontend.
 
 Ramandeep Singh is the visionary founder of DigitalFusion, bringing over three years + of experience and a deep passion for frontend development and UI/UX. His philosophy is rooted in a commitment to crafting digital journeys, not just interfaces. Ramandeep believes that the true power of technology lies in its ability to blend technical excellence with creative design to solve real-world problems. His leadership and commitment to continuous learning drive DigitalFusion's mission to become a global benchmark for innovation in the frontend space.
 `
