@@ -921,7 +921,8 @@ header:hover {
 .project-info p {
     font-size: 1.05em; 
     line-height: 1.7; 
-    color: var(--text-color-light); 
+    color: #333; /* A soft black tone for better visibility on light backgrounds */
+    
     margin-bottom: var(--spacing-md);
     flex-grow: 1;
     
@@ -930,9 +931,9 @@ header:hover {
     text-align: left;
 
     text-shadow: 
-        1px 1px 3px rgba(255, 255, 255, 0.2),
-        -1px -1px 3px rgba(0, 0, 0, 0.1),
-        0px 0px 5px rgba(0,0,0,0.05);
+        1px 1px 3px rgba(0, 0, 0, 0.1), /* Dark shadow for subtle depth */
+        -1px -1px 3px rgba(255, 255, 255, 0.5), /* Light highlight to make it pop */
+        0px 0px 5px rgba(255,255,255,0.05);
 
     position: relative; 
     padding-bottom: 5px; 
@@ -954,13 +955,13 @@ header:hover {
 /* Adjust project paragraph font size for smaller screens */
 @media (max-width: 768px) {
     .project-info p {
-        font-size: 0.95em; /* Slightly smaller for better fit */
+        font-size: 0.95em; 
     }
 }
 @media (max-width: 480px) {
     .project-info p {
-        font-size: 0.9em; /* Even smaller for small phones */
-        margin-bottom: var(--spacing-sm); /* Reduce margin */
+        font-size: 0.9em; 
+        margin-bottom: var(--spacing-sm); 
     }
 }
 
@@ -981,12 +982,12 @@ header:hover {
 }
 
 .project-card:hover .project-info p {
-    color: var(--primary-color-dark);
+    color: var(--primary-color-dark); /* Color change on hover */
     transform: perspective(700px) rotateX(6deg) rotateY(-6deg) translateZ(30px) scale(1.01);
     text-shadow: 
-        2px 2px 5px rgba(255, 255, 255, 0.3),
-        -2px -2px 5px rgba(0, 0, 0, 0.25),
-        0px 0px 8px rgba(0,0,0,0.1);
+        2px 2px 5px rgba(0, 0, 0, 0.2), /* Updated shadow for dark text */
+        -2px -2px 5px rgba(255, 255, 255, 0.7),
+        0px 0px 8px rgba(255,255,255,0.1);
 
     &:active {
         transform: perspective(700px) rotateX(3deg) rotateY(-3deg) translateZ(15px) scale(1.005);
@@ -999,7 +1000,6 @@ header:hover {
     transform: translateX(-50%) scaleX(1);
     background-color: var(--primary-color);
 }
-
 .project-info .btn {
     align-self: flex-start;
     padding: 12px 28px;
